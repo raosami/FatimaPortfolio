@@ -5,3 +5,6 @@ Gemini_Generated_Image_*.png
 WhatsApp_Image_*.png
 {*}.png
 .vercel
+
+.vercel
+.env*
