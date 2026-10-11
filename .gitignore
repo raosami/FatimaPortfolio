@@ -8,3 +8,6 @@ WhatsApp_Image_*.png
 
 .vercel
 .env*
+
+# original media sources
+WhatsApp Video *.mp4

@@ -439,6 +439,38 @@ h1.name{
 .glitter{position:fixed;inset:0;z-index:55;pointer-events:none}
 
 
+/* ---------- hero video ---------- */
+.hero-video{
+  position:absolute;inset:0;width:100%;height:100%;z-index:0;
+  object-fit:cover;object-position:center;
+  pointer-events:none;
+}
+.hero-veil{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(14,6,14,.92) 0%,rgba(18,8,18,.78) 38%,rgba(20,9,20,.45) 68%,rgba(20,9,20,.55) 100%),
+    linear-gradient(180deg,rgba(11,6,12,.55) 0%,transparent 28%,transparent 62%,rgba(11,6,12,.85) 100%),
+    radial-gradient(70% 60% at 18% 40%,rgba(168,62,140,.3),transparent 70%);
+}
+.hero.has-video .stars{z-index:2}
+.hero.has-video .wrap,.hero.has-video .scroll-cue{z-index:3}
+.vid-badge{
+  position:absolute;left:clamp(16px,4vw,32px);bottom:24px;z-index:3;
+  display:flex;align-items:center;gap:8px;
+  padding:7px 13px;border-radius:999px;
+  background:rgba(14,7,15,.7);backdrop-filter:blur(8px);
+  border:1px solid var(--line);
+  font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
+}
+.vid-badge i{width:6px;height:6px;border-radius:50%;background:#7ee08a;box-shadow:0 0 8px #7ee08a;flex:none}
+.vid-badge.paused i{background:var(--mut);box-shadow:none}
+@media(max-width:900px){
+  .hero-veil{background:
+    linear-gradient(180deg,rgba(11,6,12,.6) 0%,rgba(16,7,16,.82) 42%,rgba(13,6,14,.93) 100%),
+    radial-gradient(80% 50% at 50% 20%,rgba(168,62,140,.3),transparent 70%);}
+  .vid-badge{display:none}
+}
+
 /* ---------- editorial statement ---------- */
 .statement{
   font-family:'Playfair Display',Georgia,serif;font-weight:500;
@@ -603,7 +635,9 @@ h1.name{
 </nav>
 
 <!-- ======== HERO ======== -->
-<header class="hero" id="home">
+<header class="hero has-video" id="home">
+  <video class="hero-video" id="heroVid" src="hero.mp4" muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1"></video>
+  <div class="hero-veil" aria-hidden="true"></div>
   <div class="stars" aria-hidden="true"></div>
   <div class="wrap hero-grid">
 
@@ -668,6 +702,8 @@ h1.name{
     </aside>
 
   </div>
+
+  <div class="vid-badge" id="vidBadge"><i></i><span>Showreel playing</span></div>
 
   <a class="scroll-cue" href="#about" aria-label="Scroll to about">
     <span class="mouse"><span class="wheel"></span></span>
@@ -1184,6 +1220,69 @@ document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
       top.classList.toggle('show', window.scrollY > 600);
     });
   }, {passive:true});
+})();
+
+// ---------- hero video: plays only while the hero is on screen ----------
+(function(){
+  var vid   = document.getElementById('heroVid'),
+      hero  = document.getElementById('home'),
+      badge = document.getElementById('vidBadge');
+  if (!vid || !hero) return;
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var visible = false, failed = false;
+
+  function label(on){
+    if (!badge) return;
+    badge.classList.toggle('paused', !on);
+    badge.querySelector('span').textContent = on ? 'Showreel playing' : 'Paused';
+  }
+
+  function play(){
+    if (reduced || failed) return;
+    var r = vid.play();
+    if (r && r.catch) r.catch(function(){ /* autoplay refused; stay on the first frame */ });
+    label(true);
+  }
+  function pause(){
+    if (!vid.paused) vid.pause();
+    label(false);
+  }
+
+  vid.addEventListener('error', function(){
+    failed = true;
+    hero.classList.remove('has-video');
+    vid.remove();
+    if (badge) badge.remove();
+  });
+
+  // only decode while the hero is actually in view
+  var io = new IntersectionObserver(function(entries){
+    visible = entries[0].isIntersecting;
+    if (visible) play(); else pause();
+  }, {threshold:0});
+  io.observe(hero);
+
+  // belt and braces: if the observer is ever starved, the scroll position decides
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      ticking = false;
+      var r = hero.getBoundingClientRect();
+      var onScreen = r.bottom > 0 && r.top < (window.innerHeight || 0);
+      if (onScreen !== visible){ visible = onScreen; onScreen ? play() : pause(); }
+    });
+  }, {passive:true});
+
+  // and never in a hidden tab
+  document.addEventListener('visibilitychange', function(){
+    if (document.hidden) pause();
+    else if (visible) play();
+  });
+
+  if (reduced){ pause(); vid.removeAttribute('loop'); }
 })();
 
 // ---------- skill marquee ----------
