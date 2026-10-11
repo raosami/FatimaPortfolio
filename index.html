@@ -194,24 +194,11 @@ h1.name{
 .head-row .sub{margin-bottom:0}
 
 /* ---------- about ---------- */
-.about{display:grid;grid-template-columns:clamp(260px,34vw,400px) minmax(0,1fr);gap:clamp(28px,4vw,60px);align-items:center}
-.about-media{position:relative}
-.about-photo{
-  border-radius:20px;overflow:hidden;position:relative;
-  border:1px solid var(--line-2);
-  background:linear-gradient(170deg,rgba(235,185,223,.16),rgba(168,80,143,.06));
-}
-.about-photo img{width:100%;height:auto}
-.about-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,transparent 55%,rgba(11,6,12,.55));pointer-events:none}
-.yrs{
-  position:absolute;right:-14px;top:26px;z-index:3;text-align:center;
-  padding:14px 18px;border-radius:16px;
-  background:rgba(18,8,18,.92);backdrop-filter:blur(10px);
-  border:1px solid rgba(247,215,116,.45);box-shadow:0 14px 34px rgba(0,0,0,.5);
-}
-.yrs b{display:block;font-size:1.9rem;font-weight:600;line-height:1;background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent}
-.yrs span{font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);display:block;margin-top:4px}
-.sign{position:absolute;left:14px;bottom:12px;z-index:3;font-family:'Great Vibes',cursive;font-size:1.5rem;background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9}
+.about{display:grid;grid-template-columns:clamp(260px,32vw,360px) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:start}
+.about-side{display:grid;gap:14px;position:sticky;top:92px}
+.side-card{padding:18px 20px;border-radius:16px;background:var(--panel);border:1px solid var(--line)}
+.side-card h4{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--pink);margin-bottom:13px}
+.side-card .ticks{grid-template-columns:minmax(0,1fr);gap:10px;margin:0}
 .about p{color:var(--mut);font-size:.9rem;line-height:1.85;text-align:justify;hyphens:auto;-webkit-hyphens:auto;margin-bottom:12px}
 .ticks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px 22px;margin:22px 0 26px}
 .ticks div{display:flex;align-items:flex-start;gap:9px;font-size:.84rem;color:var(--txt)}
@@ -545,19 +532,6 @@ body.locked{overflow:hidden}
 .intro-in .connect{margin-top:28px}
 .intro-in .socials{justify-content:center}
 
-/* ---------- cinematic hero (retired) ---------- */
-.hero.cine{min-height:100svh;display:flex;align-items:center;padding:96px 0 90px}
-.hero.cine .hero-grid{display:block;text-align:center}
-.hero.cine .intro{max-width:860px;margin:0 auto}
-.hero.cine .tag{margin-bottom:20px}
-.hero.cine .statement{margin:6px auto 16px;max-width:20ch}
-.hero.cine .cta{justify-content:center;margin-top:26px}
-.hero.cine .connect{margin-top:28px}
-.hero.cine .socials{justify-content:center}
-.hero.cine .role-line{justify-content:center}
-.scroll-cue.mid{left:50%;right:auto;transform:translateX(-50%);bottom:28px}
-.scroll-cue.mid span{letter-spacing:.2em}
-
 /* ---------- about: counters, location, chips ---------- */
 .about-head{font-size:.8rem;color:var(--pink);letter-spacing:.04em;margin-bottom:14px}
 .counts{
@@ -611,35 +585,83 @@ body.locked{overflow:hidden}
 .now-foot .t{font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
 .now-foot .v{font-family:'JetBrains Mono',monospace;font-size:.92rem;margin-top:3px;background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent}
 
-/* ---------- pipeline rail ---------- */
-.rail-sec{padding:clamp(34px,5vh,56px) 0;border-bottom:1px solid var(--line);background:rgba(255,255,255,.015)}
-.rail-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:30px}
-.rail-head h3{font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:clamp(1.15rem,2.2vw,1.5rem);color:#fff}
-.rail-head h3 em{font-style:italic;background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent}
-.rail-head p{font-size:.82rem;color:var(--mut)}
-.rail{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
-.rail::before{
-  content:"";position:absolute;left:10%;right:10%;top:13px;height:2px;border-radius:2px;
-  background:linear-gradient(90deg,rgba(235,185,223,.22),rgba(235,185,223,.22));
+/* ---------- journey: portrait with the pipeline curve ---------- */
+.journey-sec{padding:clamp(54px,8vh,96px) 0;border-bottom:1px solid var(--line);background:rgba(255,255,255,.015)}
+.journey-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(26px,4vw,56px);align-items:center}
+.journey-copy h2{margin-bottom:12px}
+.journey-copy p{color:var(--mut);font-size:.9rem;line-height:1.85;max-width:46ch}
+.journey-legend{display:grid;gap:10px;margin-top:22px}
+.journey-legend div{display:flex;align-items:center;gap:11px;font-size:.82rem;color:var(--txt)}
+.journey-legend i{width:9px;height:9px;border-radius:50%;flex:none}
+
+.journey{position:relative;width:100%;max-width:540px;margin-inline:auto;aspect-ratio:1/1}
+.jr-glow{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:70%;height:70%;border-radius:50%;
+  background:radial-gradient(circle,rgba(235,185,223,.3),transparent 70%);filter:blur(34px);
 }
-.rail-fill{
-  position:absolute;left:10%;top:13px;height:2px;border-radius:2px;width:0;
-  background:var(--gold);box-shadow:0 0 12px rgba(224,171,66,.6);
-  transition:width 2.4s cubic-bezier(.33,1,.68,1);
+.jr-orbit{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:74%;height:74%;border-radius:50%;
+  border:1px dashed rgba(235,185,223,.26);
+  animation:spin 48s linear infinite;
 }
-.rail.in .rail-fill{width:80%}
-.step{position:relative;text-align:center;padding-top:0}
-.step .dot{
-  width:28px;height:28px;border-radius:50%;margin:0 auto 14px;position:relative;z-index:2;
-  display:grid;place-items:center;
-  background:#140a16;border:2px solid rgba(235,185,223,.35);
-  font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--mut);
-  transition:border-color .4s,color .4s,box-shadow .4s,transform .4s;
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.jr-photo{
+  position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);
+  width:52%;aspect-ratio:1/1;border-radius:50%;overflow:hidden;
+  background:radial-gradient(circle at 50% 120%,#d05aa8 0%,#8e2f74 45%,#3d1030 100%);
+  box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 0 1px rgba(235,185,223,.22);
 }
-.rail.in .step .dot{border-color:rgba(247,215,116,.85);color:#f7d774;box-shadow:0 0 14px rgba(224,171,66,.35)}
-.step:hover .dot{transform:scale(1.14)}
-.step b{display:block;font-size:.84rem;font-weight:600;color:#fff;margin-bottom:5px}
-.step span{font-size:.74rem;color:var(--mut);line-height:1.6;display:block}
+.jr-photo img{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:104%;max-width:none}
+.jr-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.jr-path{
+  fill:none;stroke:url(#jrGrad);stroke-width:2.4;stroke-linecap:round;
+  stroke-dasharray:1200;stroke-dashoffset:1200;
+  transition:stroke-dashoffset 2.2s cubic-bezier(.33,1,.68,1);
+}
+.journey.in .jr-path{stroke-dashoffset:0}
+.jr-node{opacity:0;transform:scale(.4);transform-origin:center;transition:opacity .5s ease,transform .5s cubic-bezier(.34,1.56,.64,1)}
+.journey.in .jr-node{opacity:1;transform:scale(1)}
+.journey.in .d1{transition-delay:.3s}
+.journey.in .d2{transition-delay:.9s}
+.journey.in .d3{transition-delay:1.45s}
+.journey.in .d4{transition-delay:2s}
+.jr-spark{opacity:0;transition:opacity .6s ease .6s}
+.journey.in .jr-spark{opacity:1}
+
+.jr-tag{
+  position:absolute;z-index:3;white-space:nowrap;
+  padding:6px 12px;border-radius:999px;
+  background:rgba(18,8,18,.9);backdrop-filter:blur(8px);
+  border:1px solid var(--line-2);
+  font-size:.7rem;font-weight:500;color:var(--txt);
+  opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease;
+}
+.journey.in .jr-tag{opacity:1;transform:none}
+.journey.in .t1{transition-delay:.45s}
+.journey.in .t2{transition-delay:1.05s}
+.journey.in .t3{transition-delay:1.6s}
+.journey.in .t4{transition-delay:2.15s}
+.jr-tag.t1{left:10%;top:85.5%}
+.jr-tag.t2{left:40%;top:90%}
+.jr-tag.t3{right:24%;top:73%}
+.jr-tag.t4{right:19%;top:8%;color:#ffefb4;border-color:rgba(247,215,116,.5)}
+
+@media(max-width:900px){
+  .journey-grid{grid-template-columns:minmax(0,1fr);gap:34px}
+  .journey{max-width:420px}
+}
+@media(max-width:520px){
+  .jr-tag{font-size:.62rem;padding:5px 9px}
+  .jr-tag.t4{right:12%}
+  .journey{max-width:330px}
+}
+@media(prefers-reduced-motion:reduce){
+  .jr-orbit{animation:none}
+  .jr-path{transition:none;stroke-dashoffset:0}
+  .jr-node,.jr-tag,.jr-spark{opacity:1;transform:none;transition:none}
+}
 
 /* ---------- marquee ---------- */
 .marq{overflow:hidden;border-bottom:1px solid var(--line);padding:16px 0;background:rgba(0,0,0,.2);
@@ -677,6 +699,7 @@ body.locked{overflow:hidden}
   .foot-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:900px){
+  .about-side{position:static}
   .nav-links{
     display:none;position:absolute;top:70px;left:0;right:0;flex-direction:column;gap:2px;padding:12px;
     background:rgba(13,6,14,.97);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);
@@ -809,20 +832,77 @@ body.locked{overflow:hidden}
   <div class="marq-in" id="marq"></div>
 </div>
 
-<!-- ======== PIPELINE RAIL ======== -->
-<section class="rail-sec">
-  <div class="wrap">
-    <div class="rail-head">
-      <h3>How a cold lead becomes a <em>signed client</em></h3>
-      <p>The five stages I own, end to end.</p>
+<!-- ======== JOURNEY ======== -->
+<section class="journey-sec" id="journey">
+  <div class="wrap journey-grid reveal">
+    <div class="journey-copy">
+      <div class="eyebrow"><span class="n">01</span>The Work<span class="rule"></span></div>
+      <h2 class="ed">From a cold name to a <em>signed client</em>.</h2>
+      <p>
+        Every account starts as a row in a list. My job is the distance between that row and a
+        working relationship: the research that finds the right person, the message that earns a
+        reply, the qualification that separates real need from politeness, and the follow-up that
+        keeps the account open long after the first deal.
+      </p>
+      <div class="journey-legend">
+        <div><i style="background:#c77fb4"></i>Research and list building</div>
+        <div><i style="background:#ebb9df"></i>Cold email and LinkedIn outreach</div>
+        <div><i style="background:#f3cfe6"></i>Qualification and negotiation</div>
+        <div><i style="background:#f7d774"></i>Delivery and long-term retention</div>
+      </div>
     </div>
-    <div class="rail" id="rail">
-      <span class="rail-fill" aria-hidden="true"></span>
-      <div class="step"><div class="dot">01</div><b>Research</b><span>Build the target list and find the right people</span></div>
-      <div class="step"><div class="dot">02</div><b>Outreach</b><span>Cold email and LinkedIn, written to be answered</span></div>
-      <div class="step"><div class="dot">03</div><b>Qualify</b><span>Separate real need from polite interest</span></div>
-      <div class="step"><div class="dot">04</div><b>Match</b><span>Align the brief with the right professionals</span></div>
-      <div class="step"><div class="dot">05</div><b>Retain</b><span>Follow up so the account keeps growing</span></div>
+
+    <div class="journey" id="journey-vis">
+      <span class="jr-glow" aria-hidden="true"></span>
+      <span class="jr-orbit" aria-hidden="true"></span>
+
+      <div class="jr-photo">
+        <img src="fatima.png?v=4" alt="Fatima Ahsan">
+      </div>
+
+      <svg class="jr-svg" viewBox="0 0 520 520" aria-hidden="true">
+        <defs>
+          <linearGradient id="jrGrad" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0%" stop-color="#a8508f"/>
+            <stop offset="38%" stop-color="#ebb9df"/>
+            <stop offset="72%" stop-color="#f3cfe6"/>
+            <stop offset="100%" stop-color="#f7d774"/>
+          </linearGradient>
+          <filter id="jrBlur" x="-60%" y="-60%" width="220%" height="220%">
+            <feGaussianBlur stdDeviation="5"/>
+          </filter>
+          <path id="jrTrack" d="M 36 462 C 70 396 96 368 130 380 C 170 394 196 438 244 446 C 310 456 372 416 404 348 C 436 276 438 146 440 62"/>
+        </defs>
+
+        <path class="jr-path" d="M 36 462 C 70 396 96 368 130 380 C 170 394 196 438 244 446 C 310 456 372 416 404 348 C 436 276 438 146 440 62"/>
+
+        <circle class="jr-node d1" cx="36" cy="462" r="7.5" fill="#140a16" stroke="#a8508f" stroke-width="2.6"/>
+        <circle class="jr-node d2" cx="244" cy="446" r="7.5" fill="#140a16" stroke="#ebb9df" stroke-width="2.6"/>
+        <circle class="jr-node d3" cx="404" cy="348" r="7.5" fill="#140a16" stroke="#f3cfe6" stroke-width="2.6"/>
+        <g class="jr-node d4">
+          <circle cx="440" cy="62" r="15" fill="none" stroke="#f7d774" stroke-width="1.4" opacity=".45"/>
+          <circle cx="440" cy="62" r="8.5" fill="#140a16" stroke="#f7d774" stroke-width="2.8"/>
+          <circle cx="440" cy="62" r="3.6" fill="#f7d774"/>
+        </g>
+
+        <g class="jr-spark">
+          <circle r="7" fill="#f7d774" opacity=".35" filter="url(#jrBlur)">
+            <animateMotion dur="7s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#jrTrack"/>
+            </animateMotion>
+          </circle>
+          <circle r="3.2" fill="#fff0bd">
+            <animateMotion dur="7s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#jrTrack"/>
+            </animateMotion>
+          </circle>
+        </g>
+      </svg>
+
+      <span class="jr-tag t1">Cold lead</span>
+      <span class="jr-tag t2">First outreach</span>
+      <span class="jr-tag t3">Qualified</span>
+      <span class="jr-tag t4">Signed client</span>
     </div>
   </div>
 </section>
@@ -830,13 +910,7 @@ body.locked{overflow:hidden}
 <!-- ======== ABOUT ======== -->
 <section class="sec" id="about">
   <div class="wrap about reveal">
-    <div class="about-media">
-      <div class="about-photo">
-        <img src="fatima.png?v=4" alt="Fatima Ahsan">
-        <span class="sign">Fatima</span>
-      </div>
-      <div class="yrs"><b data-years-since="2022-06" data-suffix="+">4+</b><span>Years of<br>Experience</span></div>
-
+    <aside class="about-side">
       <div class="now">
         <div class="now-top"><i></i>Currently</div>
         <h3>Senior BD Team Lead &amp; Coordination Executive</h3>
@@ -846,10 +920,20 @@ body.locked{overflow:hidden}
           <div><div class="t">In Role</div><div class="v" data-months-since="2025-08">13 Months</div></div>
         </div>
       </div>
-    </div>
+
+      <div class="side-card">
+        <h4>Strengths</h4>
+        <div class="ticks">
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Cold Email Outreach</div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>CRM Discipline</div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Market Research</div>
+          <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Negotiation &amp; Closing</div>
+        </div>
+      </div>
+    </aside>
 
     <div>
-      <div class="eyebrow"><span class="n">00</span>About Me<span class="rule"></span></div>
+      <div class="eyebrow"><span class="n">02</span>About Me<span class="rule"></span></div>
       <h2 class="ed">I read a brief, then I <em>find the fit</em>.</h2>
 
       <div class="counts">
@@ -880,13 +964,6 @@ body.locked{overflow:hidden}
         <span class="chip">Team Leadership</span>
       </div>
 
-      <div class="ticks">
-        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Cold Email Outreach</div>
-        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>CRM Discipline</div>
-        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Market Research</div>
-        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Negotiation &amp; Closing</div>
-      </div>
-
       <a class="btn btn-solid" href="#contact">Work With Me
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12.2l-4.6-4.6L14 6l7 6-7 6-1.4-1.4 4.6-4.6H5z"/></svg>
       </a>
@@ -897,7 +974,7 @@ body.locked{overflow:hidden}
 <!-- ======== SERVICES ======== -->
 <section class="sec alt" id="services">
   <div class="wrap reveal">
-    <div class="eyebrow"><span class="n">01</span>What I Do<span class="rule"></span></div>
+    <div class="eyebrow"><span class="n">03</span>What I Do<span class="rule"></span></div>
     <h2 class="ed">The work behind a <em>full pipeline</em>.</h2>
     <p class="sub">Six things I am relied on for, from the first list of names to the client who renews.</p>
 
@@ -951,7 +1028,7 @@ body.locked{overflow:hidden}
 <!-- ======== TOOLS ======== -->
 <section class="sec" id="tools">
   <div class="wrap reveal">
-    <div class="eyebrow"><span class="n">02</span>Tech Stack<span class="rule"></span></div>
+    <div class="eyebrow"><span class="n">04</span>Tech Stack<span class="rule"></span></div>
     <h2 class="ed">The <em>stack</em> behind the outreach.</h2>
     <p class="sub">What I use to find people, reach them and keep the pipeline honest.</p>
 
@@ -985,7 +1062,7 @@ body.locked{overflow:hidden}
   <div class="wrap reveal">
     <div class="head-row">
       <div>
-        <div class="eyebrow"><span class="n">03</span>Career Path<span class="rule"></span></div>
+        <div class="eyebrow"><span class="n">05</span>Career Path<span class="rule"></span></div>
         <h2 class="ed">Four years, <em>five roles</em>.</h2>
         <p class="sub">A steady climb from intern to team lead, most recent first.</p>
       </div>
@@ -1096,7 +1173,7 @@ body.locked{overflow:hidden}
 <!-- ======== EDUCATION ======== -->
 <section class="sec alt" id="education">
   <div class="wrap reveal">
-    <div class="eyebrow"><span class="n">05</span>Education<span class="rule"></span></div>
+    <div class="eyebrow"><span class="n">06</span>Education<span class="rule"></span></div>
     <h2 class="ed">Where I <em>studied</em>.</h2>
 
     <article class="edu-card">
@@ -1115,7 +1192,7 @@ body.locked{overflow:hidden}
 <!-- ======== CONTACT ======== -->
 <section class="sec" id="contact">
   <div class="wrap reveal">
-    <div class="eyebrow"><span class="n">06</span>Contact<span class="rule"></span></div>
+    <div class="eyebrow"><span class="n">07</span>Contact<span class="rule"></span></div>
     <h2 class="ed">Tell me what you <em>need</em>.</h2>
     <p class="sub">Tell me what you need and I will come back to you.</p>
 
@@ -1466,14 +1543,14 @@ document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
   setInterval(tick, 30000);
 })();
 
-// ---------- pipeline rail lights up on view ----------
+// ---------- journey curve draws itself on view ----------
 (function(){
-  var rail = document.getElementById('rail');
-  if (!rail) return;
+  var vis = document.getElementById('journey-vis');
+  if (!vis) return;
   var ob = new IntersectionObserver(function(en){
-    if (en[0].isIntersecting){ rail.classList.add('in'); ob.disconnect(); }
-  }, {threshold:.35});
-  ob.observe(rail);
+    if (en[0].isIntersecting){ vis.classList.add('in'); ob.disconnect(); }
+  }, {threshold:.3});
+  ob.observe(vis);
 })();
 
 // ---------- contact form -> email app ----------
