@@ -7,372 +7,324 @@
 <meta name="description" content="Portfolio of Fatima Ahsan, Senior Business Development Lead, Client Relations &amp; Sales Growth Specialist.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0b060c;
-  --card:#ffffff;
-  --ink:#3d1033;
-  --muted:#5c5670;
-  --violet:#c77fb4;
-  --violet-2:#ebb9df;
-  --violet-3:#a8508f;
-  --glow:rgba(235,185,223,.55);
-  --radius:26px;
-  --shell:min(1180px,94vw);
+  --panel:rgba(255,255,255,.04);
+  --panel-2:rgba(255,255,255,.06);
+  --line:rgba(235,185,223,.16);
+  --line-2:rgba(235,185,223,.3);
+  --pink:#ebb9df;
+  --pink-2:#f7dcee;
+  --pink-deep:#a8508f;
+  --ink-on-pink:#42112f;
+  --txt:#f3e6ef;
+  --mut:#b8a0b1;
+  --gold:linear-gradient(100deg,#f7d774 0%,#ffefb4 32%,#e0ab42 62%,#fff0bd 100%);
+  --wrap:1180px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:86px}
 body{
   font-family:'Poppins',system-ui,sans-serif;
-  background:var(--bg);
-  color:#fff;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  background:var(--bg);color:var(--txt);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
+img{max-width:100%;display:block}
+a{color:inherit}
 
-/* ---------- ambient glow field ---------- */
+/* ---------- ambient ---------- */
 .aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.aurora span{
-  position:absolute;border-radius:50%;filter:blur(90px);opacity:.55;
-  animation:drift 18s ease-in-out infinite alternate;
-}
+.aurora span{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;animation:drift 18s ease-in-out infinite alternate}
 .aurora span:nth-child(1){width:520px;height:520px;background:#9b3f86;top:-140px;left:-120px}
 .aurora span:nth-child(2){width:460px;height:460px;background:#c0388f;top:40%;right:-160px;animation-delay:-6s}
 .aurora span:nth-child(3){width:420px;height:420px;background:#5c1f4d;bottom:-160px;left:25%;animation-delay:-11s}
 @keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(40px,-50px,0) scale(1.18)}}
 
-.shell{position:relative;z-index:1;max-width:var(--shell);margin:0 auto;padding:28px 18px 70px}
+.wrap{width:100%;max-width:var(--wrap);margin:0 auto;padding:0 clamp(16px,4vw,32px);position:relative;z-index:2}
+section{position:relative;z-index:1}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(13,6,14,.72);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+}
+.nav-in{display:flex;align-items:center;gap:20px;height:70px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:600;letter-spacing:.04em;text-decoration:none;font-size:1rem;flex:none}
+.logo i{font-family:'JetBrains Mono',monospace;font-style:normal;color:var(--pink);font-size:1.05rem}
+.logo b{font-weight:600;color:#fff}
+.logo span{background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:600}
+.nav-links{display:flex;gap:4px;margin-left:auto;list-style:none}
+.nav-links a{
+  display:block;padding:8px 13px;border-radius:999px;text-decoration:none;
+  font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;color:var(--mut);
+  transition:color .2s,background .2s;position:relative;
+}
+.nav-links a:hover{color:var(--pink)}
+.nav-links a.active{color:#fff}
+.nav-links a.active::after{
+  content:"";position:absolute;left:13px;right:13px;bottom:2px;height:2px;border-radius:2px;background:var(--gold);
+}
+.nav-cta{
+  display:inline-flex;align-items:center;gap:8px;flex:none;
+  padding:11px 20px;border-radius:999px;text-decoration:none;
+  font-size:.78rem;font-weight:600;letter-spacing:.05em;
+  background:linear-gradient(135deg,var(--pink),var(--pink-2));color:var(--ink-on-pink);
+  box-shadow:0 8px 24px rgba(235,185,223,.26);transition:transform .2s,box-shadow .2s;
+}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(235,185,223,.38)}
+.nav-cta svg{width:14px;height:14px;fill:currentColor}
+.burger{display:none;margin-left:auto;background:none;border:1px solid var(--line-2);border-radius:10px;width:40px;height:40px;cursor:pointer;color:var(--pink)}
+.burger svg{width:20px;height:20px;fill:currentColor;margin:auto}
 
 /* ---------- hero ---------- */
 .hero{
-  position:relative;border-radius:34px;overflow:hidden;isolation:isolate;
+  position:relative;overflow:hidden;isolation:isolate;
+  padding:clamp(40px,7vh,80px) 0 clamp(36px,6vh,64px);
   background:
-    radial-gradient(90% 60% at 18% 8%, rgba(168,62,140,.55), transparent 62%),
-    radial-gradient(70% 55% at 88% 22%, rgba(232,120,190,.30), transparent 60%),
-    radial-gradient(85% 70% at 60% 105%, rgba(120,50,110,.45), transparent 62%),
-    linear-gradient(160deg,#2a0d24 0%,#160814 45%,#230b1f 72%,#0b0510 100%);
-  border:1px solid rgba(235,185,223,.22);
-  box-shadow:0 0 90px rgba(199,127,180,.22);
-  min-height:calc(100svh - 56px);
-  display:flex;flex-direction:column;justify-content:center;
-  padding:clamp(16px,3.4vh,48px) 0 clamp(16px,3.4vh,44px);
+    radial-gradient(80% 60% at 12% 6%, rgba(168,62,140,.5), transparent 62%),
+    radial-gradient(60% 50% at 92% 18%, rgba(232,120,190,.26), transparent 60%),
+    radial-gradient(90% 70% at 60% 108%, rgba(120,50,110,.4), transparent 62%),
+    linear-gradient(160deg,#2a0d24 0%,#160814 48%,#230b1f 74%,#0b0510 100%);
+  border-bottom:1px solid var(--line);
 }
-/* nebula wash */
-.hero::before{
-  content:"";position:absolute;inset:-20%;z-index:0;pointer-events:none;
-  background:
-    radial-gradient(closest-side at 22% 26%, rgba(214,124,186,.42), transparent 100%),
-    radial-gradient(closest-side at 76% 14%, rgba(235,150,205,.28), transparent 100%),
-    radial-gradient(closest-side at 62% 78%, rgba(150,70,140,.34), transparent 100%);
-  filter:blur(46px);opacity:.9;
-  animation:nebula 26s ease-in-out infinite alternate;
+.stars{position:absolute;inset:0;z-index:0;pointer-events:none}
+.hero-grid{
+  display:grid;grid-template-columns:minmax(0,1fr) clamp(300px,36vw,470px);
+  gap:clamp(26px,4vw,56px);align-items:center;
 }
-@keyframes nebula{
-  from{transform:translate3d(0,0,0) scale(1)}
-  to{transform:translate3d(-3%,2%,0) scale(1.1)}
+.tag{
+  display:inline-flex;align-items:center;gap:9px;margin-bottom:18px;
+  padding:7px 15px;border-radius:999px;
+  background:rgba(235,185,223,.1);border:1px solid var(--line-2);
+  font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--pink);
 }
-/* star field */
-.hero .stars{
-  position:absolute;inset:0;z-index:0;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22400%22%20height%3D%22400%22%20viewBox%3D%220%200%20400%20400%22%3E%3Ccircle%20cx%3D%22129.5%22%20cy%3D%2260.3%22%20r%3D%220.79%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.29%22%2F%3E%3Ccircle%20cx%3D%2237.7%22%20cy%3D%22233.1%22%20r%3D%220.95%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.36%22%2F%3E%3Ccircle%20cx%3D%22173.5%22%20cy%3D%2227.9%22%20r%3D%220.45%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.46%22%2F%3E%3Ccircle%20cx%3D%2249.5%22%20cy%3D%2289.3%22%20r%3D%220.78%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.72%22%2F%3E%3Ccircle%20cx%3D%22234.2%22%20cy%3D%2219.8%22%20r%3D%220.53%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.53%22%2F%3E%3Ccircle%20cx%3D%22115.8%22%20cy%3D%2257.7%22%20r%3D%220.47%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.4%22%2F%3E%3Ccircle%20cx%3D%2272.3%22%20cy%3D%22232.6%22%20r%3D%220.78%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.44%22%2F%3E%3Ccircle%20cx%3D%22284.8%22%20cy%3D%22225.7%22%20r%3D%220.77%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.5%22%2F%3E%3Ccircle%20cx%3D%22171.0%22%20cy%3D%22125.7%22%20r%3D%220.75%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.48%22%2F%3E%3Ccircle%20cx%3D%2299.4%22%20cy%3D%2271.9%22%20r%3D%220.87%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.29%22%2F%3E%3Ccircle%20cx%3D%22210.1%22%20cy%3D%22350.1%22%20r%3D%220.84%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.39%22%2F%3E%3Ccircle%20cx%3D%2247.2%22%20cy%3D%22167.2%22%20r%3D%220.85%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.33%22%2F%3E%3Ccircle%20cx%3D%22168.7%22%20cy%3D%22384.8%22%20r%3D%220.45%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.53%22%2F%3E%3Ccircle%20cx%3D%22136.0%22%20cy%3D%22140.1%22%20r%3D%220.7%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.65%22%2F%3E%3Ccircle%20cx%3D%22336.0%22%20cy%3D%22377.9%22%20r%3D%220.68%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.58%22%2F%3E%3Ccircle%20cx%3D%22292.5%22%20cy%3D%22123.8%22%20r%3D%220.75%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.59%22%2F%3E%3Ccircle%20cx%3D%22113.8%22%20cy%3D%22154.3%22%20r%3D%220.8%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.26%22%2F%3E%3Ccircle%20cx%3D%22142.2%22%20cy%3D%22244.4%22%20r%3D%220.7%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.36%22%2F%3E%3Ccircle%20cx%3D%2251.7%22%20cy%3D%2299.0%22%20r%3D%220.63%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.69%22%2F%3E%3Ccircle%20cx%3D%2266.5%22%20cy%3D%22160.7%22%20r%3D%220.57%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.32%22%2F%3E%3Ccircle%20cx%3D%22345.6%22%20cy%3D%22111.4%22%20r%3D%220.65%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.43%22%2F%3E%3Ccircle%20cx%3D%22383.1%22%20cy%3D%2260.4%22%20r%3D%220.51%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.37%22%2F%3E%3Ccircle%20cx%3D%224.8%22%20cy%3D%22332.4%22%20r%3D%220.51%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.39%22%2F%3E%3Ccircle%20cx%3D%22167.6%22%20cy%3D%22147.7%22%20r%3D%220.74%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.73%22%2F%3E%3Ccircle%20cx%3D%22343.7%22%20cy%3D%22380.1%22%20r%3D%220.79%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.62%22%2F%3E%3Ccircle%20cx%3D%22359.8%22%20cy%3D%22312.0%22%20r%3D%220.92%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.65%22%2F%3E%3Ccircle%20cx%3D%22159.2%22%20cy%3D%22157.6%22%20r%3D%220.69%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.45%22%2F%3E%3Ccircle%20cx%3D%2226.9%22%20cy%3D%2283.5%22%20r%3D%220.5%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.42%22%2F%3E%3Ccircle%20cx%3D%2241.0%22%20cy%3D%22226.7%22%20r%3D%220.72%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.72%22%2F%3E%3Ccircle%20cx%3D%2210.2%22%20cy%3D%22349.7%22%20r%3D%220.77%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.32%22%2F%3E%3Ccircle%20cx%3D%22382.2%22%20cy%3D%22240.9%22%20r%3D%220.68%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.31%22%2F%3E%3Ccircle%20cx%3D%22397.2%22%20cy%3D%22186.4%22%20r%3D%220.69%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.29%22%2F%3E%3Ccircle%20cx%3D%22299.9%22%20cy%3D%22296.1%22%20r%3D%220.69%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.6%22%2F%3E%3Ccircle%20cx%3D%229.2%22%20cy%3D%22380.4%22%20r%3D%220.72%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.32%22%2F%3E%3Ccircle%20cx%3D%22365.7%22%20cy%3D%22303.3%22%20r%3D%220.58%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.57%22%2F%3E%3Ccircle%20cx%3D%22278.5%22%20cy%3D%22104.4%22%20r%3D%220.62%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.33%22%2F%3E%3Ccircle%20cx%3D%22213.0%22%20cy%3D%22311.6%22%20r%3D%220.6%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.36%22%2F%3E%3Ccircle%20cx%3D%22322.4%22%20cy%3D%22327.3%22%20r%3D%220.84%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.36%22%2F%3E%3Ccircle%20cx%3D%22197.1%22%20cy%3D%22292.4%22%20r%3D%220.99%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.65%22%2F%3E%3Ccircle%20cx%3D%22103.7%22%20cy%3D%22277.0%22%20r%3D%220.97%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.47%22%2F%3E%3Ccircle%20cx%3D%22395.2%22%20cy%3D%22382.0%22%20r%3D%220.62%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.36%22%2F%3E%3Ccircle%20cx%3D%22188.0%22%20cy%3D%22135.1%22%20r%3D%220.69%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.74%22%2F%3E%3Ccircle%20cx%3D%22336.2%22%20cy%3D%22191.8%22%20r%3D%220.79%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.65%22%2F%3E%3Ccircle%20cx%3D%22333.9%22%20cy%3D%2248.0%22%20r%3D%220.63%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.61%22%2F%3E%3Ccircle%20cx%3D%22191.2%22%20cy%3D%2271.4%22%20r%3D%220.87%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.42%22%2F%3E%3Ccircle%20cx%3D%22158.3%22%20cy%3D%22160.6%22%20r%3D%220.97%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.61%22%2F%3E%3Ccircle%20cx%3D%22397.2%22%20cy%3D%2211.0%22%20r%3D%220.75%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.48%22%2F%3E%3Ccircle%20cx%3D%2258.5%22%20cy%3D%22330.6%22%20r%3D%220.99%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.58%22%2F%3E%3Ccircle%20cx%3D%2262.4%22%20cy%3D%22219.3%22%20r%3D%220.41%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.65%22%2F%3E%3Ccircle%20cx%3D%22259.9%22%20cy%3D%22210.6%22%20r%3D%220.96%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.47%22%2F%3E%3Ccircle%20cx%3D%22330.5%22%20cy%3D%2284.4%22%20r%3D%220.55%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.4%22%2F%3E%3Ccircle%20cx%3D%22305.5%22%20cy%3D%22130.4%22%20r%3D%220.73%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.67%22%2F%3E%3Ccircle%20cx%3D%22364.0%22%20cy%3D%22141.5%22%20r%3D%220.67%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.54%22%2F%3E%3Ccircle%20cx%3D%22168.3%22%20cy%3D%22367.1%22%20r%3D%220.7%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.52%22%2F%3E%3Ccircle%20cx%3D%22204.2%22%20cy%3D%22349.1%22%20r%3D%220.87%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.55%22%2F%3E%3Ccircle%20cx%3D%2268.9%22%20cy%3D%22189.4%22%20r%3D%220.84%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.53%22%2F%3E%3Ccircle%20cx%3D%22272.9%22%20cy%3D%22212.3%22%20r%3D%220.69%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.64%22%2F%3E%3Ccircle%20cx%3D%2222.7%22%20cy%3D%2276.5%22%20r%3D%220.43%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.3%22%2F%3E%3Ccircle%20cx%3D%22224.7%22%20cy%3D%22304.0%22%20r%3D%220.95%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.47%22%2F%3E%3Ccircle%20cx%3D%22389.3%22%20cy%3D%22242.5%22%20r%3D%220.52%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.39%22%2F%3E%3Ccircle%20cx%3D%22213.3%22%20cy%3D%22191.2%22%20r%3D%220.96%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.6%22%2F%3E%3Ccircle%20cx%3D%22369.1%22%20cy%3D%22357.1%22%20r%3D%220.52%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.47%22%2F%3E%3Ccircle%20cx%3D%2248.6%22%20cy%3D%22176.8%22%20r%3D%220.44%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.37%22%2F%3E%3Ccircle%20cx%3D%2285.1%22%20cy%3D%22121.1%22%20r%3D%220.47%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.64%22%2F%3E%3Ccircle%20cx%3D%22257.4%22%20cy%3D%22146.5%22%20r%3D%220.55%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.32%22%2F%3E%3Ccircle%20cx%3D%2287.8%22%20cy%3D%22381.0%22%20r%3D%220.64%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.49%22%2F%3E%3Ccircle%20cx%3D%22333.0%22%20cy%3D%2264.6%22%20r%3D%220.66%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.51%22%2F%3E%3Ccircle%20cx%3D%22168.5%22%20cy%3D%22142.6%22%20r%3D%220.46%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.43%22%2F%3E%3Ccircle%20cx%3D%22221.6%22%20cy%3D%22176.2%22%20r%3D%220.41%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.42%22%2F%3E%3Ccircle%20cx%3D%22118.2%22%20cy%3D%22384.3%22%20r%3D%220.47%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.71%22%2F%3E%3Ccircle%20cx%3D%22388.7%22%20cy%3D%2241.9%22%20r%3D%220.56%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.27%22%2F%3E%3Ccircle%20cx%3D%22108.2%22%20cy%3D%2251.8%22%20r%3D%220.65%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.71%22%2F%3E%3Ccircle%20cx%3D%22162.4%22%20cy%3D%22214.6%22%20r%3D%220.71%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.5%22%2F%3E%3Ccircle%20cx%3D%2235.8%22%20cy%3D%2223.0%22%20r%3D%220.81%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.46%22%2F%3E%3Ccircle%20cx%3D%22107.6%22%20cy%3D%226.7%22%20r%3D%220.45%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.38%22%2F%3E%3Ccircle%20cx%3D%22342.5%22%20cy%3D%2226.6%22%20r%3D%220.92%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.48%22%2F%3E%3Ccircle%20cx%3D%22397.7%22%20cy%3D%22167.1%22%20r%3D%220.95%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.56%22%2F%3E%3Ccircle%20cx%3D%22210.8%22%20cy%3D%2295.4%22%20r%3D%220.47%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.33%22%2F%3E%3Ccircle%20cx%3D%2272.5%22%20cy%3D%22372.9%22%20r%3D%220.78%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.52%22%2F%3E%3Ccircle%20cx%3D%22116.0%22%20cy%3D%22200.0%22%20r%3D%220.51%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.42%22%2F%3E%3Ccircle%20cx%3D%22397.8%22%20cy%3D%2214.8%22%20r%3D%220.41%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.5%22%2F%3E%3Ccircle%20cx%3D%22205.7%22%20cy%3D%2298.3%22%20r%3D%220.67%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.58%22%2F%3E%3Ccircle%20cx%3D%22172.9%22%20cy%3D%22198.0%22%20r%3D%220.9%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.45%22%2F%3E%3Ccircle%20cx%3D%22123.1%22%20cy%3D%2286.1%22%20r%3D%220.54%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.35%22%2F%3E%3Ccircle%20cx%3D%22291.5%22%20cy%3D%2255.9%22%20r%3D%220.99%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.74%22%2F%3E%3Ccircle%20cx%3D%225.7%22%20cy%3D%22250.2%22%20r%3D%220.93%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.47%22%2F%3E%3Ccircle%20cx%3D%2233.8%22%20cy%3D%22336.5%22%20r%3D%220.92%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.59%22%2F%3E%3Ccircle%20cx%3D%22239.5%22%20cy%3D%22277.1%22%20r%3D%220.43%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.34%22%2F%3E%3Ccircle%20cx%3D%22178.3%22%20cy%3D%22105.3%22%20r%3D%220.98%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.74%22%2F%3E%3Ccircle%20cx%3D%22129.4%22%20cy%3D%2213.8%22%20r%3D%220.93%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.36%22%2F%3E%3Ccircle%20cx%3D%220.4%22%20cy%3D%22152.7%22%20r%3D%220.68%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.5%22%2F%3E%3Ccircle%20cx%3D%2299.3%22%20cy%3D%22310.5%22%20r%3D%220.45%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.66%22%2F%3E%3Ccircle%20cx%3D%22159.8%22%20cy%3D%2216.7%22%20r%3D%220.41%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.4%22%2F%3E%3Ccircle%20cx%3D%2233.8%22%20cy%3D%22383.1%22%20r%3D%220.91%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.33%22%2F%3E%3Ccircle%20cx%3D%22313.6%22%20cy%3D%22238.6%22%20r%3D%220.86%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.61%22%2F%3E%3Ccircle%20cx%3D%2259.8%22%20cy%3D%22289.7%22%20r%3D%220.79%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.27%22%2F%3E%3Ccircle%20cx%3D%22356.8%22%20cy%3D%22250.9%22%20r%3D%220.84%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.66%22%2F%3E%3Ccircle%20cx%3D%22364.0%22%20cy%3D%22301.1%22%20r%3D%220.74%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.66%22%2F%3E%3Ccircle%20cx%3D%22330.6%22%20cy%3D%22233.6%22%20r%3D%220.94%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.59%22%2F%3E%3Ccircle%20cx%3D%22257.2%22%20cy%3D%2234.0%22%20r%3D%220.43%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.57%22%2F%3E%3Ccircle%20cx%3D%22150.6%22%20cy%3D%22180.6%22%20r%3D%220.43%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.26%22%2F%3E%3Ccircle%20cx%3D%22272.3%22%20cy%3D%22195.7%22%20r%3D%220.4%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.65%22%2F%3E%3Ccircle%20cx%3D%22373.0%22%20cy%3D%22359.1%22%20r%3D%220.46%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.51%22%2F%3E%3Ccircle%20cx%3D%22294.7%22%20cy%3D%22100.9%22%20r%3D%220.44%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.38%22%2F%3E%3Ccircle%20cx%3D%22302.6%22%20cy%3D%2292.3%22%20r%3D%220.79%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.48%22%2F%3E%3Ccircle%20cx%3D%2230.7%22%20cy%3D%22364.2%22%20r%3D%220.57%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.27%22%2F%3E%3Ccircle%20cx%3D%22257.1%22%20cy%3D%2231.0%22%20r%3D%220.49%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.38%22%2F%3E%3Ccircle%20cx%3D%22277.2%22%20cy%3D%22248.5%22%20r%3D%220.48%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.49%22%2F%3E%3Ccircle%20cx%3D%22107.5%22%20cy%3D%22268.8%22%20r%3D%220.82%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.59%22%2F%3E%3Ccircle%20cx%3D%22283.5%22%20cy%3D%22114.2%22%20r%3D%220.68%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.63%22%2F%3E%3Ccircle%20cx%3D%2279.7%22%20cy%3D%22391.3%22%20r%3D%220.96%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.26%22%2F%3E%3Ccircle%20cx%3D%2230.6%22%20cy%3D%22202.6%22%20r%3D%221.0%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.75%22%2F%3E%3Ccircle%20cx%3D%2283.9%22%20cy%3D%22378.2%22%20r%3D%220.53%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.54%22%2F%3E%3Ccircle%20cx%3D%22299.0%22%20cy%3D%22104.7%22%20r%3D%220.62%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.55%22%2F%3E%3Ccircle%20cx%3D%22203.5%22%20cy%3D%22354.7%22%20r%3D%220.82%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.37%22%2F%3E%3Ccircle%20cx%3D%22157.6%22%20cy%3D%2263.6%22%20r%3D%220.97%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.59%22%2F%3E%3Ccircle%20cx%3D%22120.8%22%20cy%3D%2256.3%22%20r%3D%220.61%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.41%22%2F%3E%3Ccircle%20cx%3D%220.7%22%20cy%3D%22300.3%22%20r%3D%220.9%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.31%22%2F%3E%3Ccircle%20cx%3D%22285.2%22%20cy%3D%22360.6%22%20r%3D%220.57%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.44%22%2F%3E%3Ccircle%20cx%3D%22156.1%22%20cy%3D%22348.0%22%20r%3D%220.45%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.71%22%2F%3E%3Ccircle%20cx%3D%22341.7%22%20cy%3D%22112.3%22%20r%3D%220.43%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.58%22%2F%3E%3Ccircle%20cx%3D%22374.2%22%20cy%3D%2299.7%22%20r%3D%220.56%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.51%22%2F%3E%3Ccircle%20cx%3D%22309.3%22%20cy%3D%22314.1%22%20r%3D%220.66%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.26%22%2F%3E%3Ccircle%20cx%3D%22160.0%22%20cy%3D%22350.3%22%20r%3D%220.73%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.35%22%2F%3E%3Ccircle%20cx%3D%2219.8%22%20cy%3D%22292.9%22%20r%3D%220.67%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.63%22%2F%3E%3Ccircle%20cx%3D%22347.8%22%20cy%3D%22194.2%22%20r%3D%220.95%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.53%22%2F%3E%3Ccircle%20cx%3D%22188.9%22%20cy%3D%22137.5%22%20r%3D%220.58%22%20fill%3D%22%23F6DDEF%22%20opacity%3D%220.62%22%2F%3E%3Ccircle%20cx%3D%22104.1%22%20cy%3D%22262.4%22%20r%3D%220.58%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.53%22%2F%3E%3Ccircle%20cx%3D%2247.9%22%20cy%3D%22257.3%22%20r%3D%220.45%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.5%22%2F%3E%3Ccircle%20cx%3D%22220.2%22%20cy%3D%22181.2%22%20r%3D%220.6%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.63%22%2F%3E%3C%2Fsvg%3E"),url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22300%22%20height%3D%22300%22%20viewBox%3D%220%200%20300%20300%22%3E%3Ccircle%20cx%3D%2249.5%22%20cy%3D%22206.9%22%20r%3D%221.53%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.71%22%2F%3E%3Ccircle%20cx%3D%22296.9%22%20cy%3D%22142.4%22%20r%3D%221.86%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.55%22%2F%3E%3Ccircle%20cx%3D%2270.8%22%20cy%3D%221.0%22%20r%3D%221.27%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.77%22%2F%3E%3Ccircle%20cx%3D%2243.5%22%20cy%3D%22225.4%22%20r%3D%221.82%22%20fill%3D%22%23FFE9F6%22%20opacity%3D%220.83%22%2F%3E%3Ccircle%20cx%3D%22299.3%22%20cy%3D%22221.6%22%20r%3D%221.78%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.79%22%2F%3E%3Ccircle%20cx%3D%22287.0%22%20cy%3D%22162.0%22%20r%3D%221.59%22%20fill%3D%22%23FFE9F6%22%20opacity%3D%220.81%22%2F%3E%3Ccircle%20cx%3D%227.0%22%20cy%3D%22222.3%22%20r%3D%220.99%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.89%22%2F%3E%3Ccircle%20cx%3D%22135.9%22%20cy%3D%22165.6%22%20r%3D%221.24%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.72%22%2F%3E%3Ccircle%20cx%3D%22199.5%22%20cy%3D%22141.0%22%20r%3D%221.72%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.49%22%2F%3E%3Ccircle%20cx%3D%2262.6%22%20cy%3D%22290.6%22%20r%3D%221.79%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.87%22%2F%3E%3Ccircle%20cx%3D%22296.6%22%20cy%3D%2221.3%22%20r%3D%221.46%22%20fill%3D%22%23FFE9F6%22%20opacity%3D%220.76%22%2F%3E%3Ccircle%20cx%3D%2260.3%22%20cy%3D%22277.0%22%20r%3D%221.79%22%20fill%3D%22%23FFE9F6%22%20opacity%3D%220.68%22%2F%3E%3Ccircle%20cx%3D%22286.4%22%20cy%3D%22150.4%22%20r%3D%221.22%22%20fill%3D%22%23FFE9F6%22%20opacity%3D%220.72%22%2F%3E%3Ccircle%20cx%3D%228.1%22%20cy%3D%2228.0%22%20r%3D%221.62%22%20fill%3D%22%23FFE9F6%22%20opacity%3D%221.0%22%2F%3E%3Ccircle%20cx%3D%220.8%22%20cy%3D%2221.0%22%20r%3D%221.5%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.74%22%2F%3E%3Ccircle%20cx%3D%22182.7%22%20cy%3D%22166.9%22%20r%3D%221.52%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.55%22%2F%3E%3Ccircle%20cx%3D%22187.9%22%20cy%3D%22250.1%22%20r%3D%221.23%22%20fill%3D%22%23FFE9F6%22%20opacity%3D%220.87%22%2F%3E%3Ccircle%20cx%3D%2273.7%22%20cy%3D%2250.6%22%20r%3D%221.82%22%20fill%3D%22%23FFE9F6%22%20opacity%3D%220.55%22%2F%3E%3Ccircle%20cx%3D%22112.5%22%20cy%3D%22205.0%22%20r%3D%221.58%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.94%22%2F%3E%3Ccircle%20cx%3D%22122.1%22%20cy%3D%22296.7%22%20r%3D%221.86%22%20fill%3D%22%23FFE9F6%22%20opacity%3D%220.77%22%2F%3E%3Ccircle%20cx%3D%22147.3%22%20cy%3D%22112.7%22%20r%3D%221.15%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.93%22%2F%3E%3Ccircle%20cx%3D%22168.5%22%20cy%3D%22131.8%22%20r%3D%221.31%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.86%22%2F%3E%3Ccircle%20cx%3D%22251.1%22%20cy%3D%2215.7%22%20r%3D%221.16%22%20fill%3D%22%23FFE9F6%22%20opacity%3D%220.61%22%2F%3E%3Ccircle%20cx%3D%2274.6%22%20cy%3D%22118.4%22%20r%3D%221.77%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.8%22%2F%3E%3Ccircle%20cx%3D%22295.0%22%20cy%3D%22223.8%22%20r%3D%221.38%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.59%22%2F%3E%3Ccircle%20cx%3D%22157.7%22%20cy%3D%22218.6%22%20r%3D%220.93%22%20fill%3D%22%23FFE9F6%22%20opacity%3D%220.57%22%2F%3E%3Ccircle%20cx%3D%22238.6%22%20cy%3D%22264.4%22%20r%3D%221.5%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.68%22%2F%3E%3Ccircle%20cx%3D%22270.8%22%20cy%3D%22143.1%22%20r%3D%221.04%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.77%22%2F%3E%3Ccircle%20cx%3D%22230.5%22%20cy%3D%223.1%22%20r%3D%221.59%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.97%22%2F%3E%3Ccircle%20cx%3D%2279.3%22%20cy%3D%2297.9%22%20r%3D%221.15%22%20fill%3D%22%23FFE9F6%22%20opacity%3D%220.98%22%2F%3E%3Ccircle%20cx%3D%2277.2%22%20cy%3D%22121.7%22%20r%3D%221.86%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.95%22%2F%3E%3Ccircle%20cx%3D%2242.6%22%20cy%3D%22119.1%22%20r%3D%221.09%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.8%22%2F%3E%3Ccircle%20cx%3D%2221.6%22%20cy%3D%2235.7%22%20r%3D%221.18%22%20fill%3D%22%23FFE9F6%22%20opacity%3D%220.62%22%2F%3E%3Ccircle%20cx%3D%22118.9%22%20cy%3D%22266.4%22%20r%3D%221.52%22%20fill%3D%22%23FFE9F6%22%20opacity%3D%220.55%22%2F%3E%3Ccircle%20cx%3D%2260.5%22%20cy%3D%22223.3%22%20r%3D%221.66%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.78%22%2F%3E%3Ccircle%20cx%3D%22262.2%22%20cy%3D%22232.3%22%20r%3D%221.69%22%20fill%3D%22%23FFE9F6%22%20opacity%3D%220.45%22%2F%3E%3Ccircle%20cx%3D%22259.3%22%20cy%3D%22119.4%22%20r%3D%221.47%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.92%22%2F%3E%3Ccircle%20cx%3D%2275.9%22%20cy%3D%22209.0%22%20r%3D%221.21%22%20fill%3D%22%23FFE9F6%22%20opacity%3D%220.47%22%2F%3E%3Ccircle%20cx%3D%2246.9%22%20cy%3D%22217.8%22%20r%3D%221.89%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.9%22%2F%3E%3Ccircle%20cx%3D%22147.0%22%20cy%3D%22171.9%22%20r%3D%221.45%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.48%22%2F%3E%3Ccircle%20cx%3D%22220.4%22%20cy%3D%22290.1%22%20r%3D%221.21%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.83%22%2F%3E%3Ccircle%20cx%3D%22227.3%22%20cy%3D%2256.9%22%20r%3D%221.52%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.63%22%2F%3E%3Ccircle%20cx%3D%22106.6%22%20cy%3D%2295.4%22%20r%3D%221.89%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.51%22%2F%3E%3Ccircle%20cx%3D%22195.5%22%20cy%3D%22188.0%22%20r%3D%221.71%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.99%22%2F%3E%3Ccircle%20cx%3D%22186.4%22%20cy%3D%225.9%22%20r%3D%221.54%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.69%22%2F%3E%3Ccircle%20cx%3D%22153.9%22%20cy%3D%22262.7%22%20r%3D%220.97%22%20fill%3D%22%23EBB9DF%22%20opacity%3D%220.46%22%2F%3E%3C%2Fsvg%3E");
-  background-size:400px 400px,300px 300px;
-  background-position:0 0,120px 60px;
-  animation:twinkle 2.6s ease-in-out infinite alternate, driftstars 35s linear infinite;
+.tag i{width:7px;height:7px;border-radius:50%;background:var(--pink);box-shadow:0 0 10px var(--pink)}
+.greet{font-family:'Great Vibes',cursive;font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.1;background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent;padding:.04em 0}
+h1.name{
+  font-family:'Great Vibes',cursive;font-weight:400;
+  font-size:clamp(2.6rem,7vw,5.4rem);line-height:1.12;letter-spacing:.01em;
+  padding:.04em .06em .08em 0;margin:-.06em 0 6px;
+  background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 4px 20px rgba(224,171,66,.32));
 }
-@keyframes twinkle{from{opacity:.45}to{opacity:1}}
-@keyframes driftstars{
-  from{background-position:0 0,120px 60px}
-  to{background-position:400px -200px,420px -140px}
+.role-line{
+  display:inline-flex;align-items:center;gap:3px;min-height:2em;margin-bottom:16px;
+  font-size:clamp(.92rem,1.6vw,1.15rem);font-weight:500;color:#fff;
 }
-/* keep content above the sky */
-.hero-body,.stats,.scroll-cue{position:relative;z-index:2}
-.greet{display:block}
-.hello{display:block}
-.hello{
-  font-family:'Great Vibes',cursive;
-  font-size:clamp(2rem,min(6vw,9vh),5.4rem);line-height:1.2;padding:.05em .05em .08em 0;
-  background:linear-gradient(100deg,#f7d774 0%,#ffefb4 32%,#e0ab42 62%,#fff0bd 100%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 4px 18px rgba(224,171,66,.35));
-}
-.hero-body{display:grid;grid-template-columns:minmax(0,1fr) clamp(260px,32vw,430px);gap:clamp(24px,3.5vw,52px);padding:0 clamp(22px,4vw,52px);align-items:center;max-width:1180px;margin-inline:auto;width:100%}
-.hero-body>*{min-width:0}
-
-.photo{
-  position:relative;align-self:center;
-  aspect-ratio:3/4;
-  max-height:min(62svh,520px);justify-self:end;width:100%;
-}
-.photo::after{
-  content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:92%;height:78%;border-radius:50%;z-index:0;
-  background:radial-gradient(ellipse at center,rgba(199,127,180,.42),rgba(199,127,180,.12) 55%,transparent 72%);
-  filter:blur(34px);
-}
-.photo img{
-  position:relative;z-index:1;
-  width:100%;height:100%;display:block;
-  object-fit:contain;object-position:bottom center;
-  padding:16px 10px 0;
-  filter:drop-shadow(0 18px 30px rgba(0,0,0,.55));
-  -webkit-mask-image:linear-gradient(180deg,#000 76%,rgba(0,0,0,.35) 93%,transparent 100%);
-  mask-image:linear-gradient(180deg,#000 76%,rgba(0,0,0,.35) 93%,transparent 100%);
-}
-
-.intro{padding-top:0}
-.intro .im{display:block;font-size:clamp(1.05rem,min(2vw,2.9vh),1.7rem);font-weight:600;color:#fff;line-height:1;letter-spacing:.02em;margin:clamp(3px,.8vh,9px) 0}
-.intro h1{
-  font-family:'Great Vibes',cursive;
-  font-size:clamp(2.2rem,min(6vw,8.6vh),5.2rem);
-  font-weight:400;letter-spacing:.01em;line-height:1.22;
-  padding:.06em .06em .1em 0;
-  margin:clamp(2px,.5vh,7px) 0 clamp(6px,1.1vh,12px);
-  margin-left:clamp(16px,4vw,66px);
-  background:linear-gradient(100deg,#f7d774 0%,#ffefb4 32%,#e0ab42 62%,#fff0bd 100%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 4px 18px rgba(224,171,66,.35));
-}
-.intro .role{
-  display:inline-flex;align-items:center;gap:2px;min-height:2.1em;max-width:100%;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
-  color:#f6e3f1;background:rgba(199,127,180,.22);border:1px solid rgba(235,185,223,.4);
-  padding:clamp(5px,.9vh,7px) 14px;border-radius:999px;margin-bottom:clamp(7px,1.4vh,13px);
-}
-.tw{white-space:nowrap}
-.caret{
-  display:inline-block;width:2px;height:1.05em;flex:none;
-  background:linear-gradient(180deg,#f7d774,#e0ab42);
-  animation:blink 1s steps(1) infinite;
-}
+.role-line .tw{white-space:nowrap}
+.caret{display:inline-block;width:2px;height:1.05em;background:linear-gradient(180deg,#f7d774,#e0ab42);animation:blink 1s steps(1) infinite}
 @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
-
-/* golden scroll cue */
-.scroll-cue{
-  display:grid;place-items:center;gap:5px;margin:clamp(10px,1.8vh,20px) auto 0;
-  text-decoration:none;width:max-content;
-}
-.scroll-cue .mouse{
-  width:18px;height:29px;border-radius:10px;
-  border:1.5px solid rgba(224,171,66,.7);
-  box-shadow:0 0 12px rgba(224,171,66,.2);
-  display:flex;justify-content:center;padding-top:5px;
-}
-.scroll-cue .wheel{
-  width:3px;height:6px;border-radius:99px;
-  background:linear-gradient(180deg,#fff0bd,#e0ab42);
-  animation:wheel 1.7s cubic-bezier(.4,0,.2,1) infinite;
-}
-@keyframes wheel{
-  0%{transform:translateY(0);opacity:0}
-  18%{opacity:1}
-  70%{transform:translateY(10px);opacity:0}
-  100%{transform:translateY(10px);opacity:0}
-}
-.scroll-cue span{
-  font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;
-  color:rgba(247,215,116,.8);
-}
-.scroll-cue:hover .mouse{border-color:#f7d774}
-
-.intro p{text-align:justify;hyphens:auto;-webkit-hyphens:auto;color:#d6c3d2;font-size:clamp(.78rem,min(1.05vw,1.9vh),.98rem);line-height:clamp(1.5,1.4vh,1.75);max-width:min(64ch,100%)}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(12px,2.6vh,22px)}
+.hero p.bio{color:var(--mut);font-size:clamp(.86rem,1.05vw,.96rem);line-height:1.8;max-width:58ch;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
 .btn{
-  display:inline-flex;align-items:center;gap:8px;text-decoration:none;
-  font-size:clamp(.76rem,1.7vh,.82rem);font-weight:500;padding:clamp(9px,1.7vh,12px) clamp(16px,2.4vw,22px);border-radius:999px;transition:.25s;
+  display:inline-flex;align-items:center;gap:9px;text-decoration:none;cursor:pointer;
+  font-size:.82rem;font-weight:600;padding:13px 24px;border-radius:999px;
+  transition:transform .2s,box-shadow .2s,background .2s;border:0;font-family:inherit;
 }
-.btn-solid{background:linear-gradient(135deg,#ebb9df,#f7dcee);color:#42112f;box-shadow:0 10px 30px rgba(235,185,223,.35)}
-.btn-solid:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(235,185,223,.5)}
-.btn-ghost{border:1px solid rgba(235,185,223,.45);color:#efd9e9}
-.btn-ghost:hover{background:rgba(199,127,180,.16)}
+.btn svg{width:15px;height:15px;fill:currentColor}
+.btn-solid{background:linear-gradient(135deg,var(--pink),var(--pink-2));color:var(--ink-on-pink);box-shadow:0 10px 28px rgba(235,185,223,.3)}
+.btn-solid:hover{transform:translateY(-2px);box-shadow:0 16px 38px rgba(235,185,223,.44)}
+.btn-ghost{border:1px solid var(--line-2);color:var(--txt);background:rgba(255,255,255,.03)}
+.btn-ghost:hover{background:rgba(235,185,223,.12);transform:translateY(-2px)}
 
-/* ---------- stats ---------- */
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,28px);margin:clamp(14px,2.6vh,36px) clamp(22px,4vw,52px) 0}
-.stat{padding:clamp(4px,.8vh,10px) 6px;text-align:center}
-.stat b{
-  display:block;font-size:clamp(1.3rem,3.2vh,1.9rem);font-weight:600;line-height:1.25;
-  background:linear-gradient(100deg,#f7d774 0%,#ffefb4 32%,#e0ab42 62%,#fff0bd 100%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 3px 14px rgba(224,171,66,.3));
+.connect{margin-top:30px}
+.connect .lbl{font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:11px}
+.socials{display:flex;gap:10px}
+.socials a{
+  width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+  background:var(--panel);border:1px solid var(--line);color:var(--mut);
+  transition:color .2s,border-color .2s,transform .2s,background .2s;
 }
-.stat span{font-size:.67rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(247,215,116,.7)}
+.socials a:hover{color:var(--ink-on-pink);background:linear-gradient(135deg,var(--pink),var(--pink-2));border-color:transparent;transform:translateY(-3px)}
+.socials svg{width:17px;height:17px;fill:currentColor}
 
-/* ---------- content cards ---------- */
-.stack{display:grid;gap:clamp(18px,2.6vh,26px);margin-top:clamp(18px,2.6vh,26px)}
-.card{
-  border-radius:34px;padding:clamp(26px,3.6vh,48px) clamp(20px,3vw,44px);
-  box-shadow:0 30px 90px rgba(0,0,0,.55);
+/* hero right */
+.hero-side{position:relative;display:grid;gap:16px}
+.shot{position:relative;border-radius:22px;overflow:hidden;background:linear-gradient(170deg,rgba(235,185,223,.14),rgba(168,80,143,.08));border:1px solid var(--line)}
+.shot::before{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(60% 45% at 50% 100%,rgba(235,185,223,.3),transparent 70%);
 }
-.card h2{
-  font-size:1.6rem;font-weight:600;color:var(--violet-3);margin-bottom:22px;
+.shot img{width:100%;height:auto;position:relative;z-index:0}
+.frame-l,.frame-r{position:absolute;width:52px;height:52px;z-index:2;pointer-events:none}
+.frame-l{top:12px;left:12px;border-top:2px solid rgba(247,215,116,.75);border-left:2px solid rgba(247,215,116,.75);border-top-left-radius:14px}
+.frame-r{bottom:12px;right:12px;border-bottom:2px solid rgba(247,215,116,.75);border-right:2px solid rgba(247,215,116,.75);border-bottom-right-radius:14px}
+.avail{
+  position:absolute;right:-6px;bottom:18px;z-index:3;
+  padding:11px 16px;border-radius:14px;
+  background:rgba(18,8,18,.9);backdrop-filter:blur(10px);
+  border:1px solid rgba(247,215,116,.45);box-shadow:0 12px 30px rgba(0,0,0,.5);
 }
-.card h2 + .lead{text-align:justify;hyphens:auto;-webkit-hyphens:auto;margin-top:-14px;margin-bottom:22px;color:var(--muted);font-size:.9rem;line-height:1.8}
+.avail .t{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.avail .v{display:flex;align-items:center;gap:7px;font-size:.84rem;font-weight:600;background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.avail .dot{width:7px;height:7px;border-radius:50%;background:#7ee08a;box-shadow:0 0 9px #7ee08a;flex:none}
 
-.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:46px}
+.snippet{
+  font-family:'JetBrains Mono',monospace;font-size:.72rem;line-height:1.85;
+  padding:16px 18px;border-radius:16px;
+  background:rgba(14,7,15,.72);border:1px solid var(--line);
+  color:var(--mut);overflow-x:auto;
+}
+.snippet .k{color:var(--pink)}
+.snippet .s{color:#f7d774}
+.snippet .p{color:#8f7f8c}
 
-/* experience slider */
-.slider-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center}
-.nav-btn{
-  width:42px;height:42px;border-radius:50%;cursor:pointer;flex:none;align-self:center;
-  display:grid;place-items:center;color:#f0d5e8;
-  background:rgba(255,255,255,.05);border:1px solid rgba(235,185,223,.28);
-  transition:background .2s,border-color .2s,opacity .2s,transform .2s;
-}
-.nav-btn svg{width:18px;height:18px}
-.nav-btn:hover:not(:disabled){background:linear-gradient(135deg,#ebb9df,#f7dcee);border-color:transparent;color:#42112f;transform:translateY(-1px)}
-.nav-btn:disabled{opacity:.3;cursor:default}
-.nav-btn:focus-visible{outline:2px solid var(--violet-2);outline-offset:2px}
+.scroll-cue{position:absolute;right:clamp(16px,4vw,34px);bottom:24px;z-index:3;display:grid;place-items:center;gap:6px;text-decoration:none}
+.scroll-cue .mouse{width:18px;height:29px;border-radius:10px;border:1.5px solid rgba(224,171,66,.7);display:flex;justify-content:center;padding-top:5px;box-shadow:0 0 12px rgba(224,171,66,.2)}
+.scroll-cue .wheel{width:3px;height:6px;border-radius:99px;background:linear-gradient(180deg,#fff0bd,#e0ab42);animation:wheel 1.7s cubic-bezier(.4,0,.2,1) infinite}
+@keyframes wheel{0%{transform:translateY(0);opacity:0}18%{opacity:1}70%{transform:translateY(10px);opacity:0}100%{transform:translateY(10px);opacity:0}}
+.scroll-cue span{font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(247,215,116,.8)}
 
-.slider{margin-top:clamp(14px,2.4vh,22px)}
-.track{
-  display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;
-  scroll-behavior:smooth;scrollbar-width:none;-ms-overflow-style:none;
-  padding-bottom:4px;
-}
-.track::-webkit-scrollbar{display:none}
-.track:focus-visible{outline:2px solid var(--violet-2);outline-offset:4px;border-radius:20px}
-.slide{
-  flex:0 0 100%;scroll-snap-align:start;min-width:0;
-  display:flex;flex-direction:column;
-  max-height:calc(100svh - 190px);
-  border-radius:20px;padding:clamp(16px,2.8vh,30px) clamp(18px,2.4vw,32px);
-  background:rgba(255,255,255,.045);border:1px solid rgba(235,185,223,.2);
-}
+/* ---------- section shell ---------- */
+.sec{padding:clamp(54px,8vh,96px) 0;border-bottom:1px solid var(--line)}
+.sec.alt{background:rgba(255,255,255,.015)}
+.eyebrow{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--pink);margin-bottom:9px}
+.sec h2{font-size:clamp(1.5rem,3.2vw,2.2rem);font-weight:600;color:#fff;line-height:1.25;margin-bottom:10px}
+.sec h2 em{font-style:normal;background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sec .sub{color:var(--mut);font-size:.9rem;line-height:1.8;max-width:62ch;margin-bottom:34px}
+.head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:34px}
+.head-row .sub{margin-bottom:0}
 
-.role-head{display:flex;flex-wrap:wrap;gap:12px 26px;justify-content:space-between;align-items:flex-start;margin-bottom:clamp(10px,2vh,20px);flex:none}
-.role-head>div:first-child{flex:1 1 340px;min-width:0}
-.role-head h3{font-size:clamp(.96rem,min(1.6vw,2.7vh),1.3rem);font-weight:600;color:#fbf2f8;line-height:1.35}
-.role-co{font-size:clamp(.82rem,1.7vh,.92rem);font-weight:500;color:#ebb9df;margin-top:5px}
-.role-when{font-size:clamp(.72rem,1.5vh,.78rem);color:#b8a0b1;letter-spacing:.05em;margin-top:4px}
-.role-figs{display:flex;gap:28px;flex:none}
-.fig{text-align:right}
-.fig b{
-  display:block;font-size:clamp(1rem,min(1.5vw,2.5vh),1.3rem);font-weight:600;line-height:1.1;
-  background:linear-gradient(135deg,#ebb9df,#f9e2f2);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
+/* ---------- about ---------- */
+.about{display:grid;grid-template-columns:clamp(260px,34vw,400px) minmax(0,1fr);gap:clamp(28px,4vw,60px);align-items:center}
+.about-media{position:relative}
+.about-photo{
+  border-radius:20px;overflow:hidden;position:relative;
+  border:1px solid var(--line-2);
+  background:linear-gradient(170deg,rgba(235,185,223,.16),rgba(168,80,143,.06));
 }
-.fig span{font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;color:#b8a0b1}
+.about-photo img{width:100%;height:auto}
+.about-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(200deg,transparent 55%,rgba(11,6,12,.55));pointer-events:none}
+.yrs{
+  position:absolute;right:-14px;top:26px;z-index:3;text-align:center;
+  padding:14px 18px;border-radius:16px;
+  background:rgba(18,8,18,.92);backdrop-filter:blur(10px);
+  border:1px solid rgba(247,215,116,.45);box-shadow:0 14px 34px rgba(0,0,0,.5);
+}
+.yrs b{display:block;font-size:1.9rem;font-weight:600;line-height:1;background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.yrs span{font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);display:block;margin-top:4px}
+.sign{position:absolute;left:14px;bottom:12px;z-index:3;font-family:'Great Vibes',cursive;font-size:1.5rem;background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:.9}
+.about p{color:var(--mut);font-size:.9rem;line-height:1.85;text-align:justify;hyphens:auto;-webkit-hyphens:auto;margin-bottom:12px}
+.ticks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px 22px;margin:22px 0 26px}
+.ticks div{display:flex;align-items:flex-start;gap:9px;font-size:.84rem;color:var(--txt)}
+.ticks svg{width:16px;height:16px;flex:none;margin-top:2px;fill:none;stroke:#f7d774;stroke-width:2.1}
 
-.resp-title{
-  font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:#b8a0b1;flex:none;
-  margin-bottom:clamp(8px,1.5vh,13px);padding-top:clamp(9px,1.7vh,15px);
-  border-top:1px solid rgba(235,185,223,.18);
+/* ---------- services ---------- */
+.cards4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.svc{
+  position:relative;padding:22px 20px 24px;border-radius:16px;overflow:hidden;
+  background:var(--panel);border:1px solid var(--line);
+  transition:transform .25s,border-color .25s,background .25s;
 }
-.role-points{
-  list-style:none;display:grid;gap:clamp(7px,1.3vh,11px);
-  min-height:0;overflow-y:auto;overscroll-behavior:contain;padding-right:6px;
-  scrollbar-width:thin;scrollbar-color:rgba(235,185,223,.45) transparent;
-}
-.role-points::-webkit-scrollbar{width:6px}
-.role-points::-webkit-scrollbar-thumb{background:rgba(235,185,223,.4);border-radius:99px}
-.role-points::-webkit-scrollbar-track{background:transparent}
-.role-points li{position:relative;text-align:justify;hyphens:auto;-webkit-hyphens:auto;padding-left:20px;font-size:clamp(.78rem,min(.95vw,1.8vh),.87rem);color:#d9c6d4;line-height:1.65}
-.role-points li::before{
-  content:"";position:absolute;left:0;top:.52em;
-  border-left:6px solid var(--violet-2);border-top:4px solid transparent;border-bottom:4px solid transparent;
-}
+.svc::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.svc:hover{transform:translateY(-4px);background:var(--panel-2);border-color:var(--line-2)}
+.svc:hover::after{transform:scaleX(1)}
+.svc-ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;margin-bottom:14px;background:rgba(235,185,223,.13);border:1px solid var(--line-2);color:var(--pink)}
+.svc-ic svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.svc h3{font-size:.95rem;font-weight:600;color:#fff;margin-bottom:7px;line-height:1.4}
+.svc p{font-size:.8rem;color:var(--mut);line-height:1.7}
 
-.dots{display:flex;justify-content:center;gap:9px;margin-top:clamp(12px,2vh,20px)}
-.dot{
-  width:8px;height:8px;border-radius:999px;cursor:pointer;padding:0;
-  background:rgba(235,185,223,.3);border:0;transition:width .3s,background .3s;
-}
-.dot.active{width:26px;background:linear-gradient(90deg,var(--violet-3),var(--violet-2))}
-.dot:focus-visible{outline:2px solid var(--violet-2);outline-offset:3px}
-
-/* skills */
-.skill-group{margin-bottom:22px}
-.skill-group:last-child{margin-bottom:0}
-.skill-group h4{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:11px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{
-  font-size:.76rem;padding:8px 14px;border-radius:999px;
-  font-weight:500;transition:.2s;
-}
-.chip:hover{transform:translateY(-2px)}
-
-/* tools */
-.tools{display:flex;flex-wrap:wrap;gap:10px}
+/* ---------- tools ---------- */
+.tools-row{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
 .tool{
-  display:flex;align-items:center;gap:9px;font-size:.8rem;font-weight:500;
-  padding:11px 18px;border-radius:14px;
+  display:grid;place-items:center;gap:10px;padding:22px 12px;border-radius:16px;
+  background:var(--panel);border:1px solid var(--line);
+  transition:transform .25s,background .25s,border-color .25s;
 }
-.tool svg{width:17px;height:17px;flex:none;color:#ebb9df;transition:color .2s,transform .2s}
-.tool:hover svg{color:#f7dcee;transform:scale(1.08)}
+.tool:hover{transform:translateY(-4px);background:var(--panel-2);border-color:var(--line-2)}
+.tool svg{width:28px;height:28px;color:var(--pink);transition:color .2s,transform .2s}
+.tool:hover svg{color:#f7d774;transform:scale(1.08)}
+.tool span{font-size:.78rem;font-weight:500;color:var(--txt);text-align:center}
 
-/* education card */
-.edu-card{
-  width:100%;border-radius:20px;overflow:hidden;
-  border:1px solid #ece2ff;background:#faf7ff;
-  box-shadow:0 8px 28px rgba(76,42,158,.07);transition:.3s;
+/* ---------- experience ---------- */
+.xp-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.xp{
+  display:flex;flex-direction:column;padding:22px 21px 24px;border-radius:18px;
+  background:var(--panel);border:1px solid var(--line);
+  transition:transform .25s,border-color .25s,background .25s,box-shadow .25s;
 }
-.edu-card:hover{box-shadow:0 14px 38px rgba(76,42,158,.14);transform:translateY(-2px)}
-.edu-card img{display:block;width:100%;height:auto;aspect-ratio:21/9;object-fit:cover}
-.edu-card-body{padding:20px 24px 22px}
-.edu-card-body h3{font-size:1rem;font-weight:600;color:var(--ink);line-height:1.45}
-.edu-card-body .school{font-size:.85rem;color:var(--violet-3);font-weight:500;margin-top:3px}
-.edu-card-body .when{font-size:.74rem;color:#b8a0b1;letter-spacing:.06em;margin-top:5px}
+.xp:hover{transform:translateY(-4px);border-color:var(--line-2);background:var(--panel-2);box-shadow:0 18px 40px rgba(0,0,0,.34)}
+.xp-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:13px}
+.xp-co{display:flex;align-items:center;gap:9px;font-size:.78rem;font-weight:600;color:var(--pink)}
+.xp-co i{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-style:normal;font-size:.7rem;font-weight:700;background:rgba(235,185,223,.14);border:1px solid var(--line-2);color:var(--pink)}
+.xp-when{font-size:.68rem;letter-spacing:.05em;color:var(--mut);white-space:nowrap}
+.xp h3{font-size:.95rem;font-weight:600;color:#fff;line-height:1.45;margin-bottom:12px}
+.xp ul{list-style:none;display:grid;gap:8px;margin-bottom:16px}
+.xp li{position:relative;padding-left:17px;font-size:.79rem;color:var(--mut);line-height:1.65}
+.xp li::before{content:"";position:absolute;left:0;top:.56em;border-left:5px solid var(--pink);border-top:3.5px solid transparent;border-bottom:3.5px solid transparent}
+.xp-foot{margin-top:auto;display:flex;flex-wrap:wrap;gap:6px;padding-top:14px;border-top:1px solid var(--line)}
+.pill{font-size:.66rem;padding:5px 10px;border-radius:999px;background:rgba(235,185,223,.1);border:1px solid var(--line);color:var(--pink)}
 
-/* ---------- footer pill ---------- */
-.contact{
-  margin-top:26px;border-radius:999px;padding:20px 30px;
-  background:linear-gradient(110deg,#d98cc8,#ebb9df 55%,#f7dcee);
-  display:flex;flex-wrap:wrap;justify-content:center;gap:14px 38px;
-  box-shadow:0 20px 60px rgba(199,127,180,.4);
-}
-.contact a{
-  display:flex;align-items:center;gap:10px;color:#42112f;text-decoration:none;
-  font-size:.82rem;transition:.2s;
-}
-.contact a:hover{opacity:.82}
-.contact .ic{
-  width:30px;height:30px;border-radius:50%;background:rgba(66,17,47,.16);
-  display:grid;place-items:center;flex:none;
-}
-.contact svg{width:14px;height:14px;fill:#42112f}
-.credit{text-align:center;color:#8a6f80;font-size:.72rem;margin-top:22px;letter-spacing:.04em}
+/* ---------- numbers ---------- */
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.num{text-align:center;padding:22px 10px;border-radius:16px;border:1px solid transparent;transition:border-color .25s,background .25s}
+.num:hover{border-color:var(--line);background:var(--panel)}
+.num .ic{display:grid;place-items:center;margin-bottom:10px;color:#f7d774}
+.num .ic svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.num b{display:block;font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:600;line-height:1.2;background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 14px rgba(224,171,66,.28))}
+.num span{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);display:block;margin-top:5px}
 
-/* ---------- reveal ---------- */
+/* ---------- education ---------- */
+.edu-card{border-radius:20px;overflow:hidden;background:var(--panel);border:1px solid var(--line)}
+.edu-card img{width:100%;height:auto;aspect-ratio:21/9;object-fit:cover}
+.edu-body{padding:22px 26px 24px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;justify-content:space-between}
+.edu-body h3{font-size:1.02rem;font-weight:600;color:#fff;line-height:1.4}
+.edu-body .school{font-size:.85rem;font-weight:500;color:var(--pink);margin-top:4px}
+.edu-when{font-size:.74rem;letter-spacing:.08em;color:var(--mut);padding:8px 15px;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
+
+/* ---------- contact ---------- */
+.contact-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(26px,4vw,54px);align-items:start}
+.cinfo{display:grid;gap:14px;margin-top:6px}
+.ci{display:flex;align-items:center;gap:14px}
+.ci-ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;flex:none;background:rgba(235,185,223,.12);border:1px solid var(--line-2);color:var(--pink)}
+.ci-ic svg{width:18px;height:18px;fill:currentColor}
+.ci .t{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+.ci .v{font-size:.88rem;color:#fff;text-decoration:none;word-break:break-word}
+.ci a.v:hover{color:var(--pink)}
+.ci .v.free{display:flex;align-items:center;gap:7px;color:#7ee08a}
+.form{display:grid;gap:12px;padding:clamp(20px,3vw,28px);border-radius:20px;background:var(--panel);border:1px solid var(--line)}
+.form .two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.form input,.form textarea{
+  width:100%;font-family:inherit;font-size:.85rem;color:#fff;
+  padding:13px 15px;border-radius:12px;
+  background:rgba(255,255,255,.05);border:1px solid var(--line);transition:border-color .2s,background .2s;
+}
+.form textarea{resize:vertical;min-height:130px;line-height:1.7}
+.form input::placeholder,.form textarea::placeholder{color:#8f7f8c}
+.form input:focus,.form textarea:focus{outline:none;border-color:var(--line-2);background:rgba(255,255,255,.07)}
+.form .btn{justify-content:center;width:100%;padding:14px 24px}
+.form-note{font-size:.7rem;color:var(--mut);text-align:center;line-height:1.6}
+
+/* ---------- footer ---------- */
+.foot{padding:48px 0 30px;background:rgba(0,0,0,.28)}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:30px}
+.foot-about p{font-size:.82rem;color:var(--mut);line-height:1.8;margin-top:12px;max-width:34ch}
+.foot h4{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--pink);margin-bottom:14px}
+.foot ul{list-style:none;display:grid;gap:9px}
+.foot ul a,.foot ul li{font-size:.82rem;color:var(--mut);text-decoration:none;transition:color .2s}
+.foot ul a:hover{color:var(--pink)}
+.foot .socials{margin-top:2px}
+.foot-base{
+  margin-top:34px;padding-top:20px;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:10px 20px;justify-content:space-between;align-items:center;
+  font-size:.74rem;color:var(--mut);
+}
+.to-top{
+  position:fixed;right:22px;bottom:88px;z-index:49;width:42px;height:42px;border-radius:12px;cursor:pointer;
+  display:grid;place-items:center;opacity:0;pointer-events:none;transform:translateY(10px);
+  background:linear-gradient(135deg,var(--pink),var(--pink-2));color:var(--ink-on-pink);border:0;
+  box-shadow:0 10px 26px rgba(235,185,223,.3);transition:opacity .3s,transform .3s;
+}
+.to-top.show{opacity:1;pointer-events:auto;transform:none}
+.to-top svg{width:18px;height:18px;fill:currentColor}
+
+/* ---------- reveal + glitter ---------- */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
-
-
-/* ---------- glass cards (transparent, sit on the galaxy) ---------- */
-.card{
-  background:rgba(24,14,48,.38);
-  backdrop-filter:blur(22px) saturate(125%);
-  -webkit-backdrop-filter:blur(22px) saturate(125%);
-  border:1px solid rgba(235,185,223,.24);
-  box-shadow:0 24px 70px rgba(0,0,0,.45);
-  color:#f3e6ef;
-}
-.card h2{color:#ebb9df}
-.card h2 + .lead{color:#c9b6c4}
-
-
-.skill-group h4{color:#b8a0b1}
-.chip{
-  background:rgba(199,127,180,.16);
-  border-color:rgba(235,185,223,.30);
-  color:#f0d5e8;
-}
-.chip:hover{background:linear-gradient(135deg,#ebb9df,#f7dcee);color:#42112f;border-color:transparent}
-
-.tool{
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(235,185,223,.22);
-  color:#e4dff3;
-}
-
-.edu-card{
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(235,185,223,.24);
-  box-shadow:0 10px 32px rgba(0,0,0,.32);
-}
-.edu-card:hover{box-shadow:0 18px 44px rgba(0,0,0,.42)}
-.edu-card-body h3{color:#fbf2f8}
-.edu-card-body .school{color:#ebb9df}
-.edu-card-body .when{color:#b8a0b1}
-
+.glitter{position:fixed;inset:0;z-index:55;pointer-events:none}
 
 /* ---------- AVA: voice assistant ---------- */
 .ava-fab{
@@ -487,357 +439,510 @@ body{
 .glitter{position:fixed;inset:0;z-index:55;pointer-events:none}
 
 /* ---------- responsive ---------- */
-
-/* tablet / small laptop */
-@media(max-width:940px){
-  .hero-body{grid-template-columns:minmax(0,1fr) clamp(200px,28vw,260px);gap:30px;padding:0 30px}
-  .stats{margin:26px 30px 0}
-  .card{padding:40px 32px}
-  .cols{gap:34px}
+@media(max-width:1040px){
+  .cards4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .xp-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tools-row{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .foot-grid{grid-template-columns:1fr 1fr}
 }
-
-/* stack: photo above the text */
-@media(max-width:780px){
-  .shell{padding:22px 16px 56px}
-  .hero{border-radius:28px}
-  .hero{min-height:0;padding:30px 0 34px}
-  .hero-body{grid-template-columns:minmax(0,1fr);gap:22px;padding:0 22px;text-align:center}
-  .intro h1{margin-left:0}
-  .intro p{text-align:center}
-  .photo{justify-self:center;max-height:44svh}
-  .photo{order:-1;justify-self:center;width:min(240px,62vw);aspect-ratio:3/4}
-  .photo img{padding:10px 6px 0}
-  .intro p{margin-inline:auto}
-  .cta{justify-content:center}
-  .stats{grid-template-columns:repeat(2,1fr);margin:24px 22px 0;gap:12px}
-  .cols{grid-template-columns:minmax(0,1fr);gap:30px}
-  .card{padding:34px 22px;border-radius:26px}
-  .contact{border-radius:26px;flex-direction:column;align-items:center;gap:14px;padding:24px 20px}
-  .contact a{width:100%;max-width:290px;justify-content:flex-start}
+@media(max-width:900px){
+  .nav-links{
+    display:none;position:absolute;top:70px;left:0;right:0;flex-direction:column;gap:2px;padding:12px;
+    background:rgba(13,6,14,.97);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:12px 14px;border-radius:12px;font-size:.82rem}
+  .nav-links a.active::after{display:none}
+  .nav-links a.active{background:rgba(235,185,223,.12)}
+  .burger{display:grid;place-items:center}
+  .nav-cta{display:none}
+  .hero-grid{grid-template-columns:minmax(0,1fr);gap:30px}
+  .hero-side{order:-1;max-width:360px;margin:0 auto}
+  .hero p.bio{max-width:none}
+  .about{grid-template-columns:minmax(0,1fr);gap:30px}
+  .about-media{max-width:340px}
+  .contact-grid{grid-template-columns:minmax(0,1fr)}
+  .scroll-cue{display:none}
 }
-
-/* phones */
-@media(max-width:520px){
-  .shell{padding:18px 14px 48px}
-  .hero{border-radius:24px;padding-bottom:30px}
-  .hero-body{padding:0 18px}
-  .hello{font-size:clamp(2.6rem,13vw,3.4rem)}
-  .intro .im{font-size:1.2rem}
-  .intro h1{font-size:clamp(2.4rem,12vw,3.4rem)}
-  .intro .role{font-size:.64rem;letter-spacing:.1em;padding:6px 12px;white-space:normal}
-  .intro p{font-size:.85rem;line-height:1.7}
-  .photo{width:min(210px,58vw)}
-  .btn{width:100%;justify-content:center;padding:13px 18px}
-  .cta{gap:10px}
-  .stats{margin:22px 18px 0;gap:10px}
-  .stat b{font-size:1.25rem}
-  .stat span{font-size:.6rem;letter-spacing:.07em}
-  .card{padding:28px 18px;border-radius:22px}
+@media(max-width:680px){
+  .cards4,.xp-grid{grid-template-columns:minmax(0,1fr)}
+  .tools-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nums{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ticks{grid-template-columns:minmax(0,1fr)}
+  .form .two{grid-template-columns:minmax(0,1fr)}
+  .foot-grid{grid-template-columns:1fr;gap:26px}
+  .hero p.bio,.about p{text-align:left}
   .edu-card img{aspect-ratio:16/10}
-  .edu-card-body{padding:16px 18px 18px}
-  .edu-card-body h3{font-size:.92rem}
-  .card h2{font-size:1.3rem;margin-bottom:18px}
-  .slide{padding:22px 18px}
-  .role-head h3{font-size:1.08rem}
-  .role-figs{gap:20px}
-  .fig b{font-size:1.1rem}
-  .track{gap:14px}
-  .slider-row{grid-template-columns:minmax(0,1fr);gap:0}
-  .nav-btn{display:none}
-  .role-tab{padding:12px 13px 13px}
-  .role-points li{font-size:.82rem}
-  .role-head{gap:12px}
-  .fig{text-align:left}
-  .chip{font-size:.72rem;padding:7px 12px}
-  .contact a{font-size:.78rem;word-break:break-word}
+  .to-top{bottom:80px;right:14px}
 }
-
-/* short viewports: keep the hero on one screen */
-@media(min-width:781px) and (max-height:760px){
-  .hero{min-height:calc(100svh - 36px)}
-  .shell{padding:14px 16px 56px}
-  .photo{max-height:min(58svh,420px)}
-  .hello{margin-bottom:-6px}
-  .intro p{line-height:1.45;font-size:clamp(.72rem,1.75vh,.92rem)}
-  .stats{margin-top:clamp(10px,1.8vh,22px)}
-  .stat span{font-size:.58rem;letter-spacing:.06em}
-}
-
-/* very narrow */
-@media(max-width:360px){
-  .stats{grid-template-columns:1fr}
-  .contact{border-radius:20px}
-}
-
-/* respect reduced-motion */
 @media(prefers-reduced-motion:reduce){
-  .aurora span,.hero::before,.hero .stars,.caret,.scroll-cue .wheel{animation:none}
+  .aurora span,.caret,.scroll-cue .wheel{animation:none}
   .reveal{opacity:1;transform:none;transition:none}
   html{scroll-behavior:auto}
 }
-
 </style>
 </head>
 <body>
 
 <div class="aurora"><span></span><span></span><span></span></div>
 
-<div class="shell">
-
-  <!-- HERO -->
-  <header class="hero" id="about">
-    <div class="stars" aria-hidden="true"></div>
-
-    <div class="hero-body">
-
-      <div class="intro">
-        <div class="greet">
-          <span class="hello">Hello!</span>
-          <span class="im">I'm</span>
-        </div>
-        <h1>Fatima Ahsan</h1>
-        <div class="role"><span class="tw" aria-live="polite">Senior Business Development Lead</span><span class="caret" aria-hidden="true"></span></div>
-        <p>
-          Results-driven Business Development professional with 4 years of experience in staff
-          augmentation models, lead generation, cold email outreach, and B2B client acquisition,
-          consistently driving qualified prospects through targeted campaigns. I manage end-to-end
-          sales pipelines, convert leads into long-term clients, and strengthen relationships through
-          data-driven strategies and disciplined CRM practice.
-        </p>
-        <div class="cta">
-          <a class="btn btn-solid" href="mailto:fatimakhanajk04@gmail.com">Let's work together</a>
-          <a class="btn btn-ghost" href="FATIMA_AHSAN.pdf" target="_blank" rel="noopener">Download CV</a>
-        </div>
-      </div>
-
-      <div class="photo">
-        <img src="fatima.png?v=4" alt="Fatima Ahsan">
-      </div>
-    </div>
-
-    <div class="stats">
-      <div class="stat"><b data-years-since="2022-06" data-suffix="+">4+</b><span>Years Experience</span></div>
-      <div class="stat"><b data-count="2">2</b><span>Companies</span></div>
-      <div class="stat"><b data-count="5">5</b><span>Roles Held</span></div>
-      <div class="stat"><b>B2B</b><span>Sales Focus</span></div>
-    </div>
-
-    <a class="scroll-cue" href="#experience" aria-label="Scroll to experience">
-      <span class="mouse"><span class="wheel"></span></span>
-      <span>Scroll</span>
+<!-- ======== NAV ======== -->
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="logo" href="#home"><i>&lt;/&gt;</i><b>FATIMA</b><span>AHSAN</span></a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Let's Talk
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 21 23 12 2.5 3 2.5 10l14 2-14 2z"/></svg>
     </a>
-  </header>
+  </div>
+</nav>
 
-  <!-- CONTENT CARDS -->
-  <main class="stack">
+<!-- ======== HERO ======== -->
+<header class="hero" id="home">
+  <div class="stars" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
 
-    <section class="card reveal" id="experience">
-      <h2>Experience</h2>
-      <p class="lead">Slide through the roles, most recent first.</p>
+    <div class="intro">
+      <div class="tag"><i></i>Business Development</div>
+      <div class="greet">Hello! I'm</div>
+      <h1 class="name">Fatima Ahsan</h1>
+      <div class="role-line"><span class="tw" aria-live="polite">Senior Business Development Lead</span><span class="caret" aria-hidden="true"></span></div>
+      <p class="bio">
+        Results-driven Business Development professional with 4 years of experience in staff
+        augmentation models, lead generation, cold email outreach, and B2B client acquisition,
+        consistently driving qualified prospects through targeted campaigns. I manage end-to-end
+        sales pipelines, convert leads into long-term clients, and strengthen relationships through
+        data-driven strategies and disciplined CRM practice.
+      </p>
 
-      <div class="slider">
-        <div class="slider-row">
-          <button class="nav-btn prev" aria-label="Previous role" disabled>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-          <div class="track" tabindex="0" aria-label="Roles, scroll horizontally">
-          <article class="slide" aria-label="1 of 5">
-            <div class="role-head">
-              <div>
-                <h3>Senior Business Development Team Lead &amp; Coordination Executive</h3>
-                <div class="role-co">Mavericks United</div>
-                <div class="role-when">08/2025 - Present</div>
-              </div>
-              <div class="role-figs">
-                <div class="fig"><b data-months-since="2025-08">13 Months</b><span>Duration</span></div>
-                <div class="fig"><b>Delivery</b><span>Focus</span></div>
-              </div>
-            </div>
-            <h4 class="resp-title">Core Responsibilities</h4>
-            <ul class="role-points">
-              <li>Work in a Staff Augmentation model, supporting client workforce needs through sourcing, screening, and coordinating skilled professionals by project requirement</li>
-              <li>Manage end-to-end staff augmentation operations, ensuring timely talent alignment and smooth communication between clients and resources</li>
-              <li>Support scalable hiring solutions, helping businesses fill resource gaps through effective coordination and matching</li>
-              <li>Act as the bridge between clients and talent pools, ensuring seamless deployment, resource availability, and operational delivery</li>
-              <li>Own coordination of professional profiles and client documentation for accuracy, consistency, and timely updates</li>
-              <li>Lead cross-functional coordination between Business Development Associates and management</li>
-            </ul>
-          </article>
-          <article class="slide" aria-label="2 of 5">
-            <div class="role-head">
-              <div>
-                <h3>Business Development Team Lead</h3>
-                <div class="role-co">Mavericks United</div>
-                <div class="role-when">03/2025 - 07/2025</div>
-              </div>
-              <div class="role-figs">
-                <div class="fig"><b>5 Months</b><span>Duration</span></div>
-                <div class="fig"><b>Leadership</b><span>Focus</span></div>
-              </div>
-            </div>
-            <h4 class="resp-title">Core Responsibilities</h4>
-            <ul class="role-points">
-              <li>Led business development operations, overseeing daily activity, setting KPIs, and mentoring associates toward sales targets</li>
-              <li>Executed data-driven cold email outreach, optimizing messaging and follow-ups to lift response rates and lead quality</li>
-              <li>Drove revenue growth by identifying market opportunities, upselling services, and improving conversion end to end</li>
-              <li>Analyzed campaign metrics to refine outreach strategy, boost productivity, and maximize ROI</li>
-              <li>Leveraged LinkedIn for prospecting and pipeline building within the staff augmentation model</li>
-            </ul>
-          </article>
-          <article class="slide" aria-label="3 of 5">
-            <div class="role-head">
-              <div>
-                <h3>Business Development Associate</h3>
-                <div class="role-co">Mavericks United</div>
-                <div class="role-when">07/2024 - 02/2025</div>
-              </div>
-              <div class="role-figs">
-                <div class="fig"><b>8 Months</b><span>Duration</span></div>
-                <div class="fig"><b>Pipeline</b><span>Focus</span></div>
-              </div>
-            </div>
-            <h4 class="resp-title">Core Responsibilities</h4>
-            <ul class="role-points">
-              <li>Identified and pursued new business opportunities through targeted lead generation campaigns</li>
-              <li>Built and maintained strong client relationships supporting company growth objectives</li>
-              <li>Conducted market research on industry trends and competitor strategies</li>
-              <li>Sourced and coordinated suitable talent within the staff augmentation model</li>
-              <li>Prepared business proposals and presentations for prospective clients</li>
-            </ul>
-          </article>
-          <article class="slide" aria-label="4 of 5">
-            <div class="role-head">
-              <div>
-                <h3>Business Development Associate</h3>
-                <div class="role-co">DevnMark</div>
-                <div class="role-when">01/2023 - 06/2024</div>
-              </div>
-              <div class="role-figs">
-                <div class="fig"><b>18 Months</b><span>Duration</span></div>
-                <div class="fig"><b>Acquisition</b><span>Focus</span></div>
-              </div>
-            </div>
-            <h4 class="resp-title">Core Responsibilities</h4>
-            <ul class="role-points">
-              <li>Identified and engaged potential clients through strategic outreach and lead generation</li>
-              <li>Conducted market research to surface business opportunities and industry trends</li>
-              <li>Collaborated cross-functionally on client acquisition and relationship management</li>
-              <li>Contributed to proposals, client communications, and sales pipeline management</li>
-              <li>Maintained accurate CRM records and tracked prospects through the funnel</li>
-            </ul>
-          </article>
-          <article class="slide" aria-label="5 of 5">
-            <div class="role-head">
-              <div>
-                <h3>Business Development Intern</h3>
-                <div class="role-co">DevnMark</div>
-                <div class="role-when">06/2022 - 12/2022</div>
-              </div>
-              <div class="role-figs">
-                <div class="fig"><b>7 Months</b><span>Duration</span></div>
-                <div class="fig"><b>Research</b><span>Focus</span></div>
-              </div>
-            </div>
-            <h4 class="resp-title">Core Responsibilities</h4>
-            <ul class="role-points">
-              <li>Assisted the BD team with lead generation and prospect research</li>
-              <li>Ran competitor and market analysis to support sales strategy</li>
-              <li>Participated in client outreach campaigns and follow-up communication</li>
-              <li>Maintained prospect databases and prepared BD reports</li>
-              <li>Supported senior team members in hitting monthly sales and engagement targets</li>
-            </ul>
-          </article>
-          </div>
-          <button class="nav-btn next" aria-label="Next role">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </button>
-        </div>
-        <div class="dots">
-          <button class="dot active" aria-label="Go to role 1"></button>
-          <button class="dot" aria-label="Go to role 2"></button>
-          <button class="dot" aria-label="Go to role 3"></button>
-          <button class="dot" aria-label="Go to role 4"></button>
-          <button class="dot" aria-label="Go to role 5"></button>
+      <div class="cta">
+        <a class="btn btn-solid" href="#experience">View My Work
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12.2l-4.6-4.6L14 6l7 6-7 6-1.4-1.4 4.6-4.6H5z"/></svg>
+        </a>
+        <a class="btn btn-ghost" href="FATIMA_AHSAN.pdf" target="_blank" rel="noopener">Download CV
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v10.2l3.6-3.6L17 11l-5 5-5-5 1.4-1.4L12 13.2V3zM5 19h14v2H5z"/></svg>
+        </a>
+      </div>
+
+      <div class="connect">
+        <div class="lbl">Let's Connect</div>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/fatima-ahsan-bd" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.5-2.1 2.9v5.7H9.4V9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.3zM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1zm1.8 13.1H3.6V9h3.5v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.5C0 23.2.8 24 1.8 24h20.4c1 0 1.8-.8 1.8-1.8V1.7C24 .8 23.2 0 22.2 0z"/></svg>
+          </a>
+          <a href="mailto:fatimakhanajk04@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </a>
+          <a href="tel:+923174353123" aria-label="Phone">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z"/></svg>
+          </a>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="card reveal" id="skills">
-      <h2>Skills</h2>
-      <div class="cols">
-        <div>
-          <div class="skill-group">
-            <h4>Business Development &amp; Sales</h4>
-            <div class="chips">
-              <span class="chip">Lead Generation &amp; Prospecting</span>
-              <span class="chip">Cold Email Outreach &amp; Automation</span>
-              <span class="chip">Revenue Growth &amp; B2B Sales</span>
-              <span class="chip">Sales Pipeline Management</span>
-              <span class="chip">Client Relationship Management (CRM)</span>
-              <span class="chip">Market Research &amp; Competitor Analysis</span>
-              <span class="chip">Negotiation &amp; Closing</span>
-              <span class="chip">Proposal &amp; Pitch Deck Writing</span>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div class="skill-group">
-            <h4>Leadership &amp; Strategy</h4>
-            <div class="chips">
-              <span class="chip">Team Leadership &amp; Mentoring</span>
-              <span class="chip">Strategic Planning</span>
-              <span class="chip">KPI Tracking &amp; Performance Analysis</span>
-              <span class="chip">Cross-functional Collaboration</span>
-              <span class="chip">Staff Augmentation Delivery</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <h4>Tools</h4>
-            <div class="tools">
-              <span class="tool"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/></svg>Apollo</span>
-              <span class="tool"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>Sales Navigator</span>
-              <span class="tool"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3.5 7.5l8.5 6 8.5-6"/></svg>Hunter</span>
-              <span class="tool"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</span>
-              <span class="tool"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v13c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3v-13"/><path d="M4.5 12c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3"/></svg>CRM Systems</span>
-            </div>
-          </div>
+    <aside class="hero-side">
+      <div class="shot">
+        <span class="frame-l" aria-hidden="true"></span>
+        <span class="frame-r" aria-hidden="true"></span>
+        <img src="fatima.png?v=4" alt="Fatima Ahsan">
+        <div class="avail">
+          <div class="t">Available for</div>
+          <div class="v"><span class="dot"></span>New Roles</div>
         </div>
       </div>
-    </section>
+      <div class="snippet" aria-label="Profile summary">
+<span class="p">const</span> <span class="k">fatima</span> = {<br>
+&nbsp;&nbsp;<span class="k">role</span>: <span class="s">"BD Team Lead"</span>,<br>
+&nbsp;&nbsp;<span class="k">model</span>: <span class="s">"Staff Augmentation"</span>,<br>
+&nbsp;&nbsp;<span class="k">focus</span>: <span class="s">"B2B Client Growth"</span>,<br>
+&nbsp;&nbsp;<span class="k">based</span>: <span class="s">"Lahore, Pakistan"</span><br>
+};
+      </div>
+    </aside>
 
-    <section class="card reveal" id="education">
-      <h2>Education</h2>
+  </div>
 
-      <article class="edu-card">
-        <img src="ucp-campus.jpg" alt="Aerial view of the University of Central Punjab main campus, Lahore" loading="lazy" width="900" height="757">
-        <div class="edu-card-body">
-          <h3>Bachelor of Science in Software Engineering</h3>
-          <p class="school">University of Central Punjab, Main Campus, Lahore</p>
-          <div class="when">2022 - 2026</div>
+  <a class="scroll-cue" href="#about" aria-label="Scroll to about">
+    <span class="mouse"><span class="wheel"></span></span>
+    <span>Scroll</span>
+  </a>
+</header>
+
+<!-- ======== ABOUT ======== -->
+<section class="sec" id="about">
+  <div class="wrap about reveal">
+    <div class="about-media">
+      <div class="about-photo">
+        <img src="fatima.png?v=4" alt="Fatima Ahsan">
+        <span class="sign">Fatima</span>
+      </div>
+      <div class="yrs"><b data-years-since="2022-06" data-suffix="+">4+</b><span>Years of<br>Experience</span></div>
+    </div>
+
+    <div>
+      <div class="eyebrow">About Me</div>
+      <h2>Turning Conversations Into <em>Long-Term Clients</em></h2>
+      <p>
+        I work at the point where outreach becomes revenue. Over four years I have built and run
+        end-to-end sales pipelines, taking cold prospects through research, outreach and negotiation
+        into signed, lasting client relationships.
+      </p>
+      <p>
+        Most of that work sits inside a staff augmentation model, where I source and screen skilled
+        professionals, align them to project requirements, and keep delivery running smoothly between
+        the client and the talent pool.
+      </p>
+
+      <div class="ticks">
+        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Staff Augmentation</div>
+        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Lead Generation</div>
+        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Cold Email Outreach</div>
+        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>CRM Discipline</div>
+        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Team Mentoring</div>
+        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Market Research</div>
+      </div>
+
+      <a class="btn btn-solid" href="#contact">Work With Me
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12.2l-4.6-4.6L14 6l7 6-7 6-1.4-1.4 4.6-4.6H5z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ======== SERVICES ======== -->
+<section class="sec alt" id="services">
+  <div class="wrap reveal">
+    <div class="eyebrow">Services</div>
+    <h2>What I Can Do For You</h2>
+    <p class="sub">Four things I am relied on for, from first touch to a client who stays.</p>
+
+    <div class="cards4">
+      <article class="svc">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+        <h3>Lead Generation</h3>
+        <p>Targeted prospect research and database building with Apollo, Hunter and Sales Navigator.</p>
+      </article>
+      <article class="svc">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3.5 7.5 8.5 6 8.5-6"/></svg></div>
+        <h3>Cold Email Outreach</h3>
+        <p>Data-driven campaigns and follow-up sequences, tuned against response and conversion rates.</p>
+      </article>
+      <article class="svc">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3.2"/><path d="M22 20v-2a4 4 0 0 0-3-3.9M17 3.6a4 4 0 0 1 0 7"/></svg></div>
+        <h3>Staff Augmentation</h3>
+        <p>Sourcing, screening and coordinating professionals so clients fill resource gaps fast.</p>
+      </article>
+      <article class="svc">
+        <div class="svc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20V9m6 11V4m6 16v-7m6 7V7"/></svg></div>
+        <h3>Pipeline &amp; CRM</h3>
+        <p>End-to-end pipeline ownership with disciplined CRM records and KPI tracking.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======== TOOLS ======== -->
+<section class="sec" id="tools">
+  <div class="wrap reveal">
+    <div class="eyebrow">Tech Stack</div>
+    <h2>Tools I Work With</h2>
+    <p class="sub">The stack behind the prospecting, the outreach and the pipeline.</p>
+
+    <div class="tools-row">
+      <div class="tool">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/></svg>
+        <span>Apollo</span>
+      </div>
+      <div class="tool">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.5-2.1 2.9v5.7H9.4V9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.3zM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1zm1.8 13.1H3.6V9h3.5v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.5C0 23.2.8 24 1.8 24h20.4c1 0 1.8-.8 1.8-1.8V1.7C24 .8 23.2 0 22.2 0z"/></svg>
+        <span>Sales Navigator</span>
+      </div>
+      <div class="tool">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3.5 7.5l8.5 6 8.5-6"/></svg>
+        <span>Hunter</span>
+      </div>
+      <div class="tool">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.5-2.1 2.9v5.7H9.4V9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.3zM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1zm1.8 13.1H3.6V9h3.5v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.5C0 23.2.8 24 1.8 24h20.4c1 0 1.8-.8 1.8-1.8V1.7C24 .8 23.2 0 22.2 0z"/></svg>
+        <span>LinkedIn</span>
+      </div>
+      <div class="tool">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5.5" rx="7.5" ry="3"/><path d="M4.5 5.5v13c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3v-13"/><path d="M4.5 12c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3"/></svg>
+        <span>CRM Systems</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== EXPERIENCE ======== -->
+<section class="sec alt" id="experience">
+  <div class="wrap reveal">
+    <div class="head-row">
+      <div>
+        <div class="eyebrow">Career Path</div>
+        <h2>Where I've Worked</h2>
+        <p class="sub">A steady climb from intern to team lead, most recent first.</p>
+      </div>
+      <a class="btn btn-ghost" href="FATIMA_AHSAN.pdf" target="_blank" rel="noopener">Full CV
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12.2l-4.6-4.6L14 6l7 6-7 6-1.4-1.4 4.6-4.6H5z"/></svg>
+      </a>
+    </div>
+
+    <div class="xp-grid">
+      <article class="xp">
+        <div class="xp-top">
+          <div class="xp-co"><i>MU</i>Mavericks United</div>
+          <div class="xp-when">08/2025 - Present</div>
+        </div>
+        <h3>Senior Business Development Team Lead &amp; Coordination Executive</h3>
+        <ul>
+          <li>Run staff augmentation end to end, sourcing and screening professionals by project requirement</li>
+          <li>Keep delivery aligned between clients and resources, from deployment to availability</li>
+          <li>Own profile and client documentation for accuracy, consistency and timely updates</li>
+          <li>Lead cross-functional coordination between associates and management</li>
+        </ul>
+        <div class="xp-foot">
+          <span class="pill" data-months-since="2025-08">13 Months</span>
+          <span class="pill">Delivery</span>
+          <span class="pill">Coordination</span>
         </div>
       </article>
-    </section>
 
-  </main>
+      <article class="xp">
+        <div class="xp-top">
+          <div class="xp-co"><i>MU</i>Mavericks United</div>
+          <div class="xp-when">03/2025 - 07/2025</div>
+        </div>
+        <h3>Business Development Team Lead</h3>
+        <ul>
+          <li>Led BD operations, setting KPIs and mentoring associates toward sales targets</li>
+          <li>Executed data-driven cold email outreach, lifting response rates and lead quality</li>
+          <li>Drove revenue growth through market opportunities, upselling and better conversion</li>
+          <li>Leveraged LinkedIn for prospecting and pipeline building</li>
+        </ul>
+        <div class="xp-foot">
+          <span class="pill">5 Months</span>
+          <span class="pill">Leadership</span>
+          <span class="pill">Outreach</span>
+        </div>
+      </article>
 
-  <!-- CONTACT -->
-  <footer class="contact reveal" id="contact">
-    <a href="mailto:fatimakhanajk04@gmail.com">
-      <span class="ic"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></span>
-      fatimakhanajk04@gmail.com
-    </a>
-    <a href="tel:+923174353123">
-      <span class="ic"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z"/></svg></span>
-      0317-4353123
-    </a>
-    <a href="https://www.linkedin.com/in/fatima-ahsan-bd" target="_blank" rel="noopener">
-      <span class="ic"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05A4.2 4.2 0 0 1 16.6 8.7c4 0 4.7 2.6 4.7 6V21h-4v-5.5c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9V21H9z"/></svg></span>
-      linkedin.com/in/fatima-ahsan-bd
-    </a>
-  </footer>
+      <article class="xp">
+        <div class="xp-top">
+          <div class="xp-co"><i>MU</i>Mavericks United</div>
+          <div class="xp-when">07/2024 - 02/2025</div>
+        </div>
+        <h3>Business Development Associate</h3>
+        <ul>
+          <li>Pursued new business through targeted lead generation campaigns</li>
+          <li>Built and maintained client relationships supporting growth objectives</li>
+          <li>Conducted market research on industry trends and competitor strategies</li>
+          <li>Prepared business proposals and presentations for prospective clients</li>
+        </ul>
+        <div class="xp-foot">
+          <span class="pill">8 Months</span>
+          <span class="pill">Pipeline</span>
+          <span class="pill">Research</span>
+        </div>
+      </article>
 
-  <p class="credit">&copy; <span id="yr"></span> Fatima Ahsan | Business Development Portfolio</p>
-</div>
+      <article class="xp">
+        <div class="xp-top">
+          <div class="xp-co"><i>DM</i>DevnMark</div>
+          <div class="xp-when">01/2023 - 06/2024</div>
+        </div>
+        <h3>Business Development Associate</h3>
+        <ul>
+          <li>Engaged potential clients through strategic outreach and lead generation</li>
+          <li>Collaborated cross-functionally on client acquisition and relationship management</li>
+          <li>Contributed to proposals, client communications and pipeline management</li>
+          <li>Maintained accurate CRM records and tracked prospects through the funnel</li>
+        </ul>
+        <div class="xp-foot">
+          <span class="pill">18 Months</span>
+          <span class="pill">Acquisition</span>
+          <span class="pill">CRM</span>
+        </div>
+      </article>
+
+      <article class="xp">
+        <div class="xp-top">
+          <div class="xp-co"><i>DM</i>DevnMark</div>
+          <div class="xp-when">06/2022 - 12/2022</div>
+        </div>
+        <h3>Business Development Intern</h3>
+        <ul>
+          <li>Assisted the BD team with lead generation and prospect research</li>
+          <li>Ran competitor and market analysis to support sales strategy</li>
+          <li>Participated in outreach campaigns and follow-up communication</li>
+          <li>Maintained prospect databases and prepared BD reports</li>
+        </ul>
+        <div class="xp-foot">
+          <span class="pill">7 Months</span>
+          <span class="pill">Research</span>
+          <span class="pill">Reporting</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======== NUMBERS ======== -->
+<section class="sec" id="numbers">
+  <div class="wrap reveal">
+    <div class="eyebrow">Achievements</div>
+    <h2>Numbers That Define Me</h2>
+    <p class="sub">Counted from the dates on my CV, so they stay current.</p>
+
+    <div class="nums">
+      <div class="num">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v4M12 18v4M4.9 4.9l2.9 2.9M16.2 16.2l2.9 2.9M2 12h4M18 12h4M4.9 19.1l2.9-2.9M16.2 7.8l2.9-2.9"/></svg></div>
+        <b data-years-since="2022-06" data-suffix="+">4+</b><span>Years Experience</span>
+      </div>
+      <div class="num">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V8l6-4 6 4v13"/><path d="M15 21V11l6 3v7M3 21h18M7 11h2M7 15h2"/></svg></div>
+        <b data-count="2">2</b><span>Companies</span>
+      </div>
+      <div class="num">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3M9 20h6M12 14v6"/></svg></div>
+        <b data-count="5">5</b><span>Roles Held</span>
+      </div>
+      <div class="num">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div>
+        <b>B2B</b><span>Sales Focus</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== EDUCATION ======== -->
+<section class="sec alt" id="education">
+  <div class="wrap reveal">
+    <div class="eyebrow">Education</div>
+    <h2>Where I Studied</h2>
+
+    <article class="edu-card">
+      <img src="ucp-campus.jpg" alt="University of Central Punjab main campus, Lahore" loading="lazy" width="900" height="757">
+      <div class="edu-body">
+        <div>
+          <h3>Bachelor of Science in Software Engineering</h3>
+          <div class="school">University of Central Punjab, Main Campus, Lahore</div>
+        </div>
+        <div class="edu-when">2022 - 2026</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ======== CONTACT ======== -->
+<section class="sec" id="contact">
+  <div class="wrap reveal">
+    <div class="eyebrow">Contact</div>
+    <h2>Let's Build Something <em>Together</em></h2>
+    <p class="sub">Tell me what you need and I will come back to you.</p>
+
+    <div class="contact-grid">
+      <div class="cinfo">
+        <div class="ci">
+          <div class="ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+          <div><div class="t">Email</div><a class="v" href="mailto:fatimakhanajk04@gmail.com">fatimakhanajk04@gmail.com</a></div>
+        </div>
+        <div class="ci">
+          <div class="ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z"/></svg></div>
+          <div><div class="t">Phone</div><a class="v" href="tel:+923174353123">0317-4353123</a></div>
+        </div>
+        <div class="ci">
+          <div class="ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.5-2.1 2.9v5.7H9.4V9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.3zM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1zm1.8 13.1H3.6V9h3.5v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.5C0 23.2.8 24 1.8 24h20.4c1 0 1.8-.8 1.8-1.8V1.7C24 .8 23.2 0 22.2 0z"/></svg></div>
+          <div><div class="t">LinkedIn</div><a class="v" href="https://www.linkedin.com/in/fatima-ahsan-bd" target="_blank" rel="noopener">fatima-ahsan-bd</a></div>
+        </div>
+        <div class="ci">
+          <div class="ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></div>
+          <div><div class="t">Location</div><div class="v">Lahore, Pakistan</div></div>
+        </div>
+        <div class="ci">
+          <div class="ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 10.6 4.3 2.5-.9 1.6L11 13.6V6h2z"/></svg></div>
+          <div><div class="t">Availability</div><div class="v free"><span style="width:8px;height:8px;border-radius:50%;background:#7ee08a;box-shadow:0 0 9px #7ee08a"></span>Open to opportunities</div></div>
+        </div>
+      </div>
+
+      <form class="form" id="contactForm">
+        <div class="two">
+          <input id="cName" type="text" placeholder="Your Name" autocomplete="name" required>
+          <input id="cEmail" type="email" placeholder="Your Email" autocomplete="email" required>
+        </div>
+        <input id="cSubject" type="text" placeholder="Subject">
+        <textarea id="cMsg" placeholder="Your Message" required></textarea>
+        <button class="btn btn-solid" type="submit">Send Message
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 21 23 12 2.5 3 2.5 10l14 2-14 2z"/></svg>
+        </button>
+        <p class="form-note" id="formNote">This opens your email app with the message ready to send.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FOOTER ======== -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <a class="logo" href="#home"><i>&lt;/&gt;</i><b>FATIMA</b><span>AHSAN</span></a>
+        <p>Turning targeted outreach into qualified pipeline, and qualified pipeline into clients who stay.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#experience">Experience</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Focus Areas</h4>
+        <ul>
+          <li>Lead Generation</li>
+          <li>Cold Email Outreach</li>
+          <li>Staff Augmentation</li>
+          <li>Client Relationships</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Follow Me</h4>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/fatima-ahsan-bd" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.5-2.1 2.9v5.7H9.4V9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.3zM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1zm1.8 13.1H3.6V9h3.5v11.5zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.5C0 23.2.8 24 1.8 24h20.4c1 0 1.8-.8 1.8-1.8V1.7C24 .8 23.2 0 22.2 0z"/></svg>
+          </a>
+          <a href="mailto:fatimakhanajk04@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </a>
+          <a href="tel:+923174353123" aria-label="Phone">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot-base">
+      <div>&copy; <span id="yr"></span> Fatima Ahsan. All rights reserved.</div>
+      <div>Business Development &middot; Lahore, Pakistan</div>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6l7 7-1.4 1.4L13 9.8V20h-2V9.8l-4.6 4.6L5 13z"/></svg>
+</button>
 
 <!-- AVA: voice assistant -->
 <button class="ava-fab" id="avaFab" aria-label="Open assistant" aria-expanded="false">
@@ -877,56 +982,87 @@ body{
 <script>
 document.getElementById('yr').textContent = new Date().getFullYear();
 
-// scroll reveal
+// ---------- star field in the hero ----------
+(function(){
+  var host = document.querySelector('.hero .stars');
+  if (!host) return;
+  var GOLD = ['#ffffff','#ebb9df','#f6ddef','#ffe9f6'];
+  var html = '';
+  for (var i = 0; i < 90; i++){
+    var x = (Math.random()*100).toFixed(2), y = (Math.random()*100).toFixed(2);
+    var r = (0.8 + Math.random()*1.9).toFixed(1), o = (0.25 + Math.random()*0.6).toFixed(2);
+    var d = (Math.random()*4).toFixed(2);
+    html += '<span style="position:absolute;left:'+x+'%;top:'+y+'%;width:'+r+'px;height:'+r+'px;'+
+            'border-radius:50%;background:'+GOLD[(Math.random()*GOLD.length)|0]+';opacity:'+o+';'+
+            'animation:twk 3s ease-in-out '+d+'s infinite alternate"></span>';
+  }
+  host.innerHTML = html;
+  var st = document.createElement('style');
+  st.textContent = '@keyframes twk{from{opacity:.2}to{opacity:1}}@media(prefers-reduced-motion:reduce){.hero .stars span{animation:none!important}}';
+  document.head.appendChild(st);
+})();
+
+// ---------- scroll reveal ----------
 var io = new IntersectionObserver(function(entries){
   entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
-}, {threshold:.12});
+}, {threshold:.1});
 document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 
-// experience slider
+// ---------- nav: mobile menu, active link, back to top ----------
 (function(){
-  var track = document.querySelector('.track');
-  if (!track) return;
-  var slides = Array.prototype.slice.call(track.querySelectorAll('.slide'));
-  var dots   = Array.prototype.slice.call(document.querySelectorAll('.dot'));
-  var prev   = document.querySelector('.nav-btn.prev');
-  var next   = document.querySelector('.nav-btn.next');
-  var i = 0;
+  var burger = document.getElementById('burger'),
+      links  = document.getElementById('navLinks'),
+      top    = document.getElementById('toTop');
 
-  function go(n){
-    i = Math.max(0, Math.min(slides.length - 1, n));
-    track.scrollTo({ left: slides[i].offsetLeft - track.offsetLeft, behavior: 'smooth' });
-    sync();
-  }
-  function sync(){
-    dots.forEach(function(d, n){ d.classList.toggle('active', n === i); });
-    prev.disabled = i === 0;
-    next.disabled = i === slides.length - 1;
-  }
-
-  prev.addEventListener('click', function(){ go(i - 1); });
-  next.addEventListener('click', function(){ go(i + 1); });
-  dots.forEach(function(d, n){ d.addEventListener('click', function(){ go(n); }); });
-
-  track.addEventListener('keydown', function(e){
-    if (e.key === 'ArrowRight'){ e.preventDefault(); go(i + 1); }
-    if (e.key === 'ArrowLeft'){ e.preventDefault(); go(i - 1); }
+  burger.addEventListener('click', function(){
+    var open = links.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open);
+  });
+  links.addEventListener('click', function(e){
+    if (e.target.tagName === 'A'){ links.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }
   });
 
-  // keep dots in step with swipe / trackpad scrolling
-  var t;
-  track.addEventListener('scroll', function(){
-    clearTimeout(t);
-    t = setTimeout(function(){
-      var mid = track.scrollLeft + track.clientWidth / 2, best = 0, d = Infinity;
-      slides.forEach(function(s, n){
-        var c = s.offsetLeft - track.offsetLeft + s.offsetWidth / 2;
-        if (Math.abs(c - mid) < d){ d = Math.abs(c - mid); best = n; }
-      });
-      i = best; sync();
-    }, 90);
+  var anchors = Array.prototype.slice.call(links.querySelectorAll('a'));
+  var spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (!en.isIntersecting) return;
+      anchors.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id); });
+    });
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  ['home','about','services','tools','experience','education','contact'].forEach(function(id){
+    var el = document.getElementById(id); if (el) spy.observe(el);
+  });
+
+  top.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      ticking = false;
+      top.classList.toggle('show', window.scrollY > 600);
+    });
+  }, {passive:true});
+})();
+
+// ---------- contact form -> email app ----------
+(function(){
+  var form = document.getElementById('contactForm');
+  if (!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('cName').value.trim(),
+        mail = document.getElementById('cEmail').value.trim(),
+        subj = document.getElementById('cSubject').value.trim() || 'Portfolio enquiry',
+        msg  = document.getElementById('cMsg').value.trim();
+    var body = msg + '\n\n--\n' + name + (mail ? '\n' + mail : '');
+    window.location.href = 'mailto:fatimakhanajk04@gmail.com'
+      + '?subject=' + encodeURIComponent(subj)
+      + '&body=' + encodeURIComponent(body);
+    document.getElementById('formNote').textContent = 'Opening your email app with the message ready to send.';
   });
 })();
+
 // typewriter on the role line
 (function(){
   var el = document.querySelector('.tw');
@@ -1282,8 +1418,6 @@ document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
     });
   }, { passive: true });
 })();
-
 </script>
-
 </body>
 </html>
