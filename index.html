@@ -7,7 +7,7 @@
 <meta name="description" content="Portfolio of Fatima Ahsan, Senior Business Development Lead, Client Relations &amp; Sales Growth Specialist.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0b060c;
@@ -438,6 +438,92 @@ h1.name{
 /* golden scroll glitter */
 .glitter{position:fixed;inset:0;z-index:55;pointer-events:none}
 
+
+/* ---------- editorial statement ---------- */
+.statement{
+  font-family:'Playfair Display',Georgia,serif;font-weight:500;
+  font-size:clamp(1.65rem,3.5vw,2.75rem);line-height:1.22;letter-spacing:-.01em;
+  color:#fff;margin:4px 0 14px;
+}
+.statement em{font-style:italic;background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.statement b{font-weight:500;color:var(--pink)}
+.sec h2.ed{font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:clamp(1.7rem,3.6vw,2.5rem);letter-spacing:-.01em}
+.sec h2.ed em{font-style:italic}
+.eyebrow .n{font-family:'Playfair Display',Georgia,serif;font-style:italic;color:var(--mut);margin-right:9px}
+.eyebrow .rule{display:inline-block;width:34px;height:1px;background:var(--line-2);vertical-align:middle;margin-left:11px}
+
+/* ---------- now card ---------- */
+.now{
+  padding:16px 18px;border-radius:16px;
+  background:rgba(14,7,15,.72);border:1px solid var(--line);
+}
+.now-top{display:flex;align-items:center;gap:8px;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pink);margin-bottom:10px}
+.now-top i{width:6px;height:6px;border-radius:50%;background:#7ee08a;box-shadow:0 0 9px #7ee08a;animation:livedot 2s ease-in-out infinite}
+@keyframes livedot{0%,100%{opacity:1}50%{opacity:.35}}
+.now h3{font-size:.88rem;font-weight:600;color:#fff;line-height:1.4}
+.now .co{font-size:.78rem;color:var(--mut);margin-top:3px}
+.now-foot{display:flex;gap:26px;margin-top:13px;padding-top:12px;border-top:1px solid var(--line)}
+.now-foot .t{font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.now-foot .v{font-family:'JetBrains Mono',monospace;font-size:.92rem;margin-top:3px;background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- pipeline rail ---------- */
+.rail-sec{padding:clamp(34px,5vh,56px) 0;border-bottom:1px solid var(--line);background:rgba(255,255,255,.015)}
+.rail-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+.rail-head h3{font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:clamp(1.15rem,2.2vw,1.5rem);color:#fff}
+.rail-head h3 em{font-style:italic;background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent}
+.rail-head p{font-size:.82rem;color:var(--mut)}
+.rail{position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.rail::before{
+  content:"";position:absolute;left:10%;right:10%;top:13px;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,rgba(235,185,223,.22),rgba(235,185,223,.22));
+}
+.rail-fill{
+  position:absolute;left:10%;top:13px;height:2px;border-radius:2px;width:0;
+  background:var(--gold);box-shadow:0 0 12px rgba(224,171,66,.6);
+  transition:width 2.4s cubic-bezier(.33,1,.68,1);
+}
+.rail.in .rail-fill{width:80%}
+.step{position:relative;text-align:center;padding-top:0}
+.step .dot{
+  width:28px;height:28px;border-radius:50%;margin:0 auto 14px;position:relative;z-index:2;
+  display:grid;place-items:center;
+  background:#140a16;border:2px solid rgba(235,185,223,.35);
+  font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--mut);
+  transition:border-color .4s,color .4s,box-shadow .4s,transform .4s;
+}
+.rail.in .step .dot{border-color:rgba(247,215,116,.85);color:#f7d774;box-shadow:0 0 14px rgba(224,171,66,.35)}
+.step:hover .dot{transform:scale(1.14)}
+.step b{display:block;font-size:.84rem;font-weight:600;color:#fff;margin-bottom:5px}
+.step span{font-size:.74rem;color:var(--mut);line-height:1.6;display:block}
+
+/* ---------- marquee ---------- */
+.marq{overflow:hidden;border-bottom:1px solid var(--line);padding:16px 0;background:rgba(0,0,0,.2);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);}
+.marq-in{display:flex;width:max-content;animation:slide 34s linear infinite}
+.marq:hover .marq-in{animation-play-state:paused}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marq-in span{
+  font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:clamp(1rem,2vw,1.35rem);
+  color:var(--txt);padding:0 26px;white-space:nowrap;display:flex;align-items:center;gap:52px;
+}
+.marq-in span::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--pink);flex:none;box-shadow:0 0 8px var(--pink)}
+
+/* ---------- numbered process rows ---------- */
+.rows{border-top:1px solid var(--line)}
+.row{
+  display:grid;grid-template-columns:48px 44px minmax(0,1fr) minmax(0,1.25fr) minmax(0,.8fr);
+  gap:18px;align-items:center;padding:20px 6px;border-bottom:1px solid var(--line);
+  transition:background .25s,padding-left .25s;
+}
+.row:hover{background:rgba(255,255,255,.028);padding-left:14px}
+.row .no{font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--mut)}
+.row .ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:rgba(235,185,223,.12);border:1px solid var(--line-2);color:var(--pink)}
+.row .ic svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.row h3{font-family:'Playfair Display',Georgia,serif;font-weight:500;font-size:clamp(1rem,1.8vw,1.26rem);color:#fff;line-height:1.3}
+.row p{font-size:.82rem;color:var(--mut);line-height:1.7}
+.row .meta{font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);text-align:right;line-height:1.7}
+
 /* ---------- responsive ---------- */
 @media(max-width:1040px){
   .cards4{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -471,12 +557,20 @@ h1.name{
   .ticks{grid-template-columns:minmax(0,1fr)}
   .form .two{grid-template-columns:minmax(0,1fr)}
   .foot-grid{grid-template-columns:1fr;gap:26px}
+  .rail{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px}
+  .rail::before,.rail-fill{display:none}
+  .row{grid-template-columns:34px minmax(0,1fr);gap:10px 14px;padding:18px 4px}
+  .row .ic{display:none}
+  .row .meta{grid-column:2;text-align:left}
+  .row p{grid-column:2}
+
   .hero p.bio,.about p{text-align:left}
   .edu-card img{aspect-ratio:16/10}
   .to-top{bottom:80px;right:14px}
 }
 @media(prefers-reduced-motion:reduce){
-  .aurora span,.caret,.scroll-cue .wheel{animation:none}
+  .aurora span,.caret,.scroll-cue .wheel,.marq-in,.now-top i{animation:none}
+  .rail-fill{transition:none;width:80%}
   .reveal{opacity:1;transform:none;transition:none}
   html{scroll-behavior:auto}
 }
@@ -517,6 +611,7 @@ h1.name{
       <div class="tag"><i></i>Business Development</div>
       <div class="greet">Hello! I'm</div>
       <h1 class="name">Fatima Ahsan</h1>
+      <p class="statement">Pipelines that fill.<br>Clients that <em>stay</em>.</p>
       <div class="role-line"><span class="tw" aria-live="polite">Senior Business Development Lead</span><span class="caret" aria-hidden="true"></span></div>
       <p class="bio">
         Results-driven Business Development professional with 4 years of experience in staff
@@ -561,13 +656,14 @@ h1.name{
           <div class="v"><span class="dot"></span>New Roles</div>
         </div>
       </div>
-      <div class="snippet" aria-label="Profile summary">
-<span class="p">const</span> <span class="k">fatima</span> = {<br>
-&nbsp;&nbsp;<span class="k">role</span>: <span class="s">"BD Team Lead"</span>,<br>
-&nbsp;&nbsp;<span class="k">model</span>: <span class="s">"Staff Augmentation"</span>,<br>
-&nbsp;&nbsp;<span class="k">focus</span>: <span class="s">"B2B Client Growth"</span>,<br>
-&nbsp;&nbsp;<span class="k">based</span>: <span class="s">"Lahore, Pakistan"</span><br>
-};
+      <div class="now">
+        <div class="now-top"><i></i>Currently</div>
+        <h3>Senior BD Team Lead &amp; Coordination Executive</h3>
+        <div class="co">Mavericks United &middot; since August 2025</div>
+        <div class="now-foot">
+          <div><div class="t">Lahore</div><div class="v" id="clkLhr">--:--</div></div>
+          <div><div class="t">In Role</div><div class="v" data-months-since="2025-08">13 Months</div></div>
+        </div>
       </div>
     </aside>
 
@@ -578,6 +674,29 @@ h1.name{
     <span>Scroll</span>
   </a>
 </header>
+
+<!-- ======== SKILL MARQUEE ======== -->
+<div class="marq" aria-hidden="true">
+  <div class="marq-in" id="marq"></div>
+</div>
+
+<!-- ======== PIPELINE RAIL ======== -->
+<section class="rail-sec">
+  <div class="wrap">
+    <div class="rail-head">
+      <h3>How a cold lead becomes a <em>signed client</em></h3>
+      <p>The five stages I own, end to end.</p>
+    </div>
+    <div class="rail" id="rail">
+      <span class="rail-fill" aria-hidden="true"></span>
+      <div class="step"><div class="dot">01</div><b>Research</b><span>Build the target list and find the right people</span></div>
+      <div class="step"><div class="dot">02</div><b>Outreach</b><span>Cold email and LinkedIn, written to be answered</span></div>
+      <div class="step"><div class="dot">03</div><b>Qualify</b><span>Separate real need from polite interest</span></div>
+      <div class="step"><div class="dot">04</div><b>Match</b><span>Align the brief with the right professionals</span></div>
+      <div class="step"><div class="dot">05</div><b>Retain</b><span>Follow up so the account keeps growing</span></div>
+    </div>
+  </div>
+</section>
 
 <!-- ======== ABOUT ======== -->
 <section class="sec" id="about">
@@ -591,8 +710,8 @@ h1.name{
     </div>
 
     <div>
-      <div class="eyebrow">About Me</div>
-      <h2>Turning Conversations Into <em>Long-Term Clients</em></h2>
+      <div class="eyebrow"><span class="n">00</span>About Me<span class="rule"></span></div>
+      <h2 class="ed">I read a brief, then I <em>find the fit</em>.</h2>
       <p>
         I work at the point where outreach becomes revenue. Over four years I have built and run
         end-to-end sales pipelines, taking cold prospects through research, outreach and negotiation
@@ -623,31 +742,53 @@ h1.name{
 <!-- ======== SERVICES ======== -->
 <section class="sec alt" id="services">
   <div class="wrap reveal">
-    <div class="eyebrow">Services</div>
-    <h2>What I Can Do For You</h2>
-    <p class="sub">Four things I am relied on for, from first touch to a client who stays.</p>
+    <div class="eyebrow"><span class="n">01</span>What I Do<span class="rule"></span></div>
+    <h2 class="ed">The work behind a <em>full pipeline</em>.</h2>
+    <p class="sub">Six things I am relied on for, from the first list of names to the client who renews.</p>
 
-    <div class="cards4">
-      <article class="svc">
-        <div class="svc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
-        <h3>Lead Generation</h3>
-        <p>Targeted prospect research and database building with Apollo, Hunter and Sales Navigator.</p>
-      </article>
-      <article class="svc">
-        <div class="svc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3.5 7.5 8.5 6 8.5-6"/></svg></div>
-        <h3>Cold Email Outreach</h3>
-        <p>Data-driven campaigns and follow-up sequences, tuned against response and conversion rates.</p>
-      </article>
-      <article class="svc">
-        <div class="svc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3.2"/><path d="M22 20v-2a4 4 0 0 0-3-3.9M17 3.6a4 4 0 0 1 0 7"/></svg></div>
-        <h3>Staff Augmentation</h3>
-        <p>Sourcing, screening and coordinating professionals so clients fill resource gaps fast.</p>
-      </article>
-      <article class="svc">
-        <div class="svc-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20V9m6 11V4m6 16v-7m6 7V7"/></svg></div>
+    <div class="rows">
+      <div class="row">
+        <div class="no">01</div>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+        <h3>Lead generation</h3>
+        <p>Prospect research and targeted list building with Apollo, Hunter and Sales Navigator.</p>
+        <div class="meta">Mavericks United &middot; DevnMark</div>
+      </div>
+      <div class="row">
+        <div class="no">02</div>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3.5 7.5 8.5 6 8.5-6"/></svg></div>
+        <h3>Cold email outreach</h3>
+        <p>Campaigns and follow-up sequences, rewritten against the response rates they earn.</p>
+        <div class="meta">Core skill &middot; Team Lead</div>
+      </div>
+      <div class="row">
+        <div class="no">03</div>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.4 20.5h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.5-2.1 2.9v5.7H9.4V9h3.4v1.6c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.3zM5.3 7.4a2.1 2.1 0 1 1 0-4.1 2.1 2.1 0 0 1 0 4.1zm1.8 13.1H3.6V9h3.5v11.5z"/></svg></div>
+        <h3>LinkedIn prospecting</h3>
+        <p>Finding decision-makers and opening conversations that are worth somebody&rsquo;s time.</p>
+        <div class="meta">Sales Navigator</div>
+      </div>
+      <div class="row">
+        <div class="no">04</div>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3.2"/><path d="M22 20v-2a4 4 0 0 0-3-3.9M17 3.6a4 4 0 0 1 0 7"/></svg></div>
+        <h3>Staff augmentation</h3>
+        <p>Turning a client&rsquo;s hiring need into a clear brief, then sourcing the professional who fits it.</p>
+        <div class="meta">Mavericks United &middot; 2024&ndash;now</div>
+      </div>
+      <div class="row">
+        <div class="no">05</div>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20V9m6 11V4m6 16v-7m6 7V7"/></svg></div>
         <h3>Pipeline &amp; CRM</h3>
-        <p>End-to-end pipeline ownership with disciplined CRM records and KPI tracking.</p>
-      </article>
+        <p>Keeping the pipeline clean and the CRM honest, so the forecast means something.</p>
+        <div class="meta">KPI tracking</div>
+      </div>
+      <div class="row">
+        <div class="no">06</div>
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/><path d="M4.5 20.5a7.5 7.5 0 0 1 15 0"/></svg></div>
+        <h3>Team leadership</h3>
+        <p>Setting KPIs, mentoring associates and coordinating between the team and management.</p>
+        <div class="meta">Team Lead &middot; 2025</div>
+      </div>
     </div>
   </div>
 </section>
@@ -655,9 +796,9 @@ h1.name{
 <!-- ======== TOOLS ======== -->
 <section class="sec" id="tools">
   <div class="wrap reveal">
-    <div class="eyebrow">Tech Stack</div>
-    <h2>Tools I Work With</h2>
-    <p class="sub">The stack behind the prospecting, the outreach and the pipeline.</p>
+    <div class="eyebrow"><span class="n">02</span>Tech Stack<span class="rule"></span></div>
+    <h2 class="ed">The <em>stack</em> behind the outreach.</h2>
+    <p class="sub">What I use to find people, reach them and keep the pipeline honest.</p>
 
     <div class="tools-row">
       <div class="tool">
@@ -689,8 +830,8 @@ h1.name{
   <div class="wrap reveal">
     <div class="head-row">
       <div>
-        <div class="eyebrow">Career Path</div>
-        <h2>Where I've Worked</h2>
+        <div class="eyebrow"><span class="n">03</span>Career Path<span class="rule"></span></div>
+        <h2 class="ed">Four years, <em>five roles</em>.</h2>
         <p class="sub">A steady climb from intern to team lead, most recent first.</p>
       </div>
       <a class="btn btn-ghost" href="FATIMA_AHSAN.pdf" target="_blank" rel="noopener">Full CV
@@ -800,8 +941,8 @@ h1.name{
 <!-- ======== NUMBERS ======== -->
 <section class="sec" id="numbers">
   <div class="wrap reveal">
-    <div class="eyebrow">Achievements</div>
-    <h2>Numbers That Define Me</h2>
+    <div class="eyebrow"><span class="n">04</span>Achievements<span class="rule"></span></div>
+    <h2 class="ed">Counted, not <em>claimed</em>.</h2>
     <p class="sub">Counted from the dates on my CV, so they stay current.</p>
 
     <div class="nums">
@@ -828,8 +969,8 @@ h1.name{
 <!-- ======== EDUCATION ======== -->
 <section class="sec alt" id="education">
   <div class="wrap reveal">
-    <div class="eyebrow">Education</div>
-    <h2>Where I Studied</h2>
+    <div class="eyebrow"><span class="n">05</span>Education<span class="rule"></span></div>
+    <h2 class="ed">Where I <em>studied</em>.</h2>
 
     <article class="edu-card">
       <img src="ucp-campus.jpg" alt="University of Central Punjab main campus, Lahore" loading="lazy" width="900" height="757">
@@ -847,8 +988,8 @@ h1.name{
 <!-- ======== CONTACT ======== -->
 <section class="sec" id="contact">
   <div class="wrap reveal">
-    <div class="eyebrow">Contact</div>
-    <h2>Let's Build Something <em>Together</em></h2>
+    <div class="eyebrow"><span class="n">06</span>Contact<span class="rule"></span></div>
+    <h2 class="ed">Tell me what you <em>need</em>.</h2>
     <p class="sub">Tell me what you need and I will come back to you.</p>
 
     <div class="contact-grid">
@@ -1043,6 +1184,42 @@ document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
       top.classList.toggle('show', window.scrollY > 600);
     });
   }, {passive:true});
+})();
+
+// ---------- skill marquee ----------
+(function(){
+  var host = document.getElementById('marq');
+  if (!host) return;
+  var items = ['Lead Generation','Cold Email Outreach','LinkedIn Prospecting','Staff Augmentation',
+               'Client Acquisition','Pipeline Management','CRM Discipline','Negotiation & Closing',
+               'Market Research','Team Leadership'];
+  var run = items.map(function(t){ return '<span>' + t + '</span>'; }).join('');
+  host.innerHTML = run + run;   // duplicated so the loop meets itself seamlessly
+})();
+
+// ---------- live clock in Lahore ----------
+(function(){
+  var el = document.getElementById('clkLhr');
+  if (!el) return;
+  function tick(){
+    try {
+      el.textContent = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Asia/Karachi', hour: '2-digit', minute: '2-digit', hour12: false
+      }).format(new Date());
+    } catch(e){ el.textContent = ''; }
+  }
+  tick();
+  setInterval(tick, 30000);
+})();
+
+// ---------- pipeline rail lights up on view ----------
+(function(){
+  var rail = document.getElementById('rail');
+  if (!rail) return;
+  var ob = new IntersectionObserver(function(en){
+    if (en[0].isIntersecting){ rail.classList.add('in'); ob.disconnect(); }
+  }, {threshold:.35});
+  ob.observe(rail);
 })();
 
 // ---------- contact form -> email app ----------
