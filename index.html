@@ -448,9 +448,9 @@ h1.name{
 .hero-veil{
   position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
-    linear-gradient(90deg,rgba(14,6,14,.92) 0%,rgba(18,8,18,.78) 38%,rgba(20,9,20,.45) 68%,rgba(20,9,20,.55) 100%),
-    linear-gradient(180deg,rgba(11,6,12,.55) 0%,transparent 28%,transparent 62%,rgba(11,6,12,.85) 100%),
-    radial-gradient(70% 60% at 18% 40%,rgba(168,62,140,.3),transparent 70%);
+    radial-gradient(68% 58% at 50% 48%,rgba(10,5,11,.8),rgba(10,5,11,.5) 58%,rgba(10,5,11,.25) 100%),
+    linear-gradient(180deg,rgba(11,6,12,.78) 0%,rgba(11,6,12,.3) 26%,rgba(11,6,12,.42) 66%,rgba(11,6,12,.94) 100%),
+    radial-gradient(60% 50% at 50% 45%,rgba(168,62,140,.26),transparent 72%);
 }
 .hero.has-video .stars{z-index:2}
 .hero.has-video .wrap,.hero.has-video .scroll-cue{z-index:3}
@@ -469,6 +469,45 @@ h1.name{
     linear-gradient(180deg,rgba(11,6,12,.6) 0%,rgba(16,7,16,.82) 42%,rgba(13,6,14,.93) 100%),
     radial-gradient(80% 50% at 50% 20%,rgba(168,62,140,.3),transparent 70%);}
   .vid-badge{display:none}
+}
+
+/* ---------- cinematic hero ---------- */
+.hero.cine{min-height:100svh;display:flex;align-items:center;padding:96px 0 90px}
+.hero.cine .hero-grid{display:block;text-align:center}
+.hero.cine .intro{max-width:860px;margin:0 auto}
+.hero.cine .tag{margin-bottom:20px}
+.hero.cine .statement{margin:6px auto 16px;max-width:20ch}
+.hero.cine .cta{justify-content:center;margin-top:26px}
+.hero.cine .connect{margin-top:28px}
+.hero.cine .socials{justify-content:center}
+.hero.cine .role-line{justify-content:center}
+.scroll-cue.mid{left:50%;right:auto;transform:translateX(-50%);bottom:28px}
+.scroll-cue.mid span{letter-spacing:.2em}
+
+/* ---------- about: counters, location, chips ---------- */
+.about-head{font-size:.8rem;color:var(--pink);letter-spacing:.04em;margin-bottom:14px}
+.counts{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;
+  margin:24px 0 22px;padding:20px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.count{text-align:left}
+.count b{
+  display:block;font-size:clamp(1.3rem,2.6vw,1.8rem);font-weight:600;line-height:1.15;
+  background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 3px 12px rgba(224,171,66,.26));
+}
+.count span{font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);display:block;margin-top:5px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 24px}
+.chip{
+  font-size:.73rem;padding:7px 13px;border-radius:999px;
+  background:rgba(235,185,223,.1);border:1px solid var(--line);color:var(--pink);
+  transition:background .2s,color .2s,border-color .2s;
+}
+.chip:hover{background:linear-gradient(135deg,var(--pink),var(--pink-2));color:var(--ink-on-pink);border-color:transparent}
+.about-media .now{margin-top:16px}
+@media(max-width:680px){
+  .counts{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px}
+  .hero.cine{padding:84px 0 76px}
 }
 
 /* ---------- editorial statement ---------- */
@@ -635,25 +674,18 @@ h1.name{
 </nav>
 
 <!-- ======== HERO ======== -->
-<header class="hero has-video" id="home">
+<header class="hero has-video cine" id="home">
   <video class="hero-video" id="heroVid" src="hero.mp4" muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1"></video>
   <div class="hero-veil" aria-hidden="true"></div>
   <div class="stars" aria-hidden="true"></div>
-  <div class="wrap hero-grid">
 
+  <div class="wrap hero-grid">
     <div class="intro">
-      <div class="tag"><i></i>Business Development</div>
+      <div class="tag"><i></i>Business Development &middot; Lahore</div>
       <div class="greet">Hello! I'm</div>
       <h1 class="name">Fatima Ahsan</h1>
       <p class="statement">Pipelines that fill.<br>Clients that <em>stay</em>.</p>
       <div class="role-line"><span class="tw" aria-live="polite">Senior Business Development Lead</span><span class="caret" aria-hidden="true"></span></div>
-      <p class="bio">
-        Results-driven Business Development professional with 4 years of experience in staff
-        augmentation models, lead generation, cold email outreach, and B2B client acquisition,
-        consistently driving qualified prospects through targeted campaigns. I manage end-to-end
-        sales pipelines, convert leads into long-term clients, and strengthen relationships through
-        data-driven strategies and disciplined CRM practice.
-      </p>
 
       <div class="cta">
         <a class="btn btn-solid" href="#experience">View My Work
@@ -679,35 +711,13 @@ h1.name{
         </div>
       </div>
     </div>
-
-    <aside class="hero-side">
-      <div class="shot">
-        <span class="frame-l" aria-hidden="true"></span>
-        <span class="frame-r" aria-hidden="true"></span>
-        <img src="fatima.png?v=4" alt="Fatima Ahsan">
-        <div class="avail">
-          <div class="t">Available for</div>
-          <div class="v"><span class="dot"></span>New Roles</div>
-        </div>
-      </div>
-      <div class="now">
-        <div class="now-top"><i></i>Currently</div>
-        <h3>Senior BD Team Lead &amp; Coordination Executive</h3>
-        <div class="co">Mavericks United &middot; since August 2025</div>
-        <div class="now-foot">
-          <div><div class="t">Lahore</div><div class="v" id="clkLhr">--:--</div></div>
-          <div><div class="t">In Role</div><div class="v" data-months-since="2025-08">13 Months</div></div>
-        </div>
-      </div>
-    </aside>
-
   </div>
 
   <div class="vid-badge" id="vidBadge"><i></i><span>Showreel playing</span></div>
 
-  <a class="scroll-cue" href="#about" aria-label="Scroll to about">
+  <a class="scroll-cue mid" href="#about" aria-label="Scroll to about">
     <span class="mouse"><span class="wheel"></span></span>
-    <span>Scroll</span>
+    <span>Scroll to explore</span>
   </a>
 </header>
 
@@ -743,11 +753,30 @@ h1.name{
         <span class="sign">Fatima</span>
       </div>
       <div class="yrs"><b data-years-since="2022-06" data-suffix="+">4+</b><span>Years of<br>Experience</span></div>
+
+      <div class="now">
+        <div class="now-top"><i></i>Currently</div>
+        <h3>Senior BD Team Lead &amp; Coordination Executive</h3>
+        <div class="co">Mavericks United &middot; since August 2025</div>
+        <div class="now-foot">
+          <div><div class="t">Lahore</div><div class="v" id="clkLhr">--:--</div></div>
+          <div><div class="t">In Role</div><div class="v" data-months-since="2025-08">13 Months</div></div>
+        </div>
+      </div>
     </div>
 
     <div>
       <div class="eyebrow"><span class="n">00</span>About Me<span class="rule"></span></div>
       <h2 class="ed">I read a brief, then I <em>find the fit</em>.</h2>
+
+      <div class="counts">
+        <div class="count"><b data-years-since="2022-06" data-suffix="+">4+</b><span>Years Exp.</span></div>
+        <div class="count"><b data-count="5">5</b><span>Roles Held</span></div>
+        <div class="count"><b data-count="2">2</b><span>Companies</span></div>
+        <div class="count"><b>B2B</b><span>Sales Focus</span></div>
+      </div>
+
+      <p class="about-head">Based in Lahore, Pakistan.</p>
       <p>
         I work at the point where outreach becomes revenue. Over four years I have built and run
         end-to-end sales pipelines, taking cold prospects through research, outreach and negotiation
@@ -756,16 +785,23 @@ h1.name{
       <p>
         Most of that work sits inside a staff augmentation model, where I source and screen skilled
         professionals, align them to project requirements, and keep delivery running smoothly between
-        the client and the talent pool.
+        the client and the talent pool. I am finishing a BS in Software Engineering alongside it, so
+        technical briefs do not get lost in translation.
       </p>
 
+      <div class="chips">
+        <span class="chip">Business Development</span>
+        <span class="chip">Staff Augmentation</span>
+        <span class="chip">Lead Generation</span>
+        <span class="chip">Client Relations</span>
+        <span class="chip">Team Leadership</span>
+      </div>
+
       <div class="ticks">
-        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Staff Augmentation</div>
-        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Lead Generation</div>
         <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Cold Email Outreach</div>
         <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>CRM Discipline</div>
-        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Team Mentoring</div>
         <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Market Research</div>
+        <div><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Negotiation &amp; Closing</div>
       </div>
 
       <a class="btn btn-solid" href="#contact">Work With Me
@@ -970,34 +1006,6 @@ h1.name{
           <span class="pill">Reporting</span>
         </div>
       </article>
-    </div>
-  </div>
-</section>
-
-<!-- ======== NUMBERS ======== -->
-<section class="sec" id="numbers">
-  <div class="wrap reveal">
-    <div class="eyebrow"><span class="n">04</span>Achievements<span class="rule"></span></div>
-    <h2 class="ed">Counted, not <em>claimed</em>.</h2>
-    <p class="sub">Counted from the dates on my CV, so they stay current.</p>
-
-    <div class="nums">
-      <div class="num">
-        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v4M12 18v4M4.9 4.9l2.9 2.9M16.2 16.2l2.9 2.9M2 12h4M18 12h4M4.9 19.1l2.9-2.9M16.2 7.8l2.9-2.9"/></svg></div>
-        <b data-years-since="2022-06" data-suffix="+">4+</b><span>Years Experience</span>
-      </div>
-      <div class="num">
-        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V8l6-4 6 4v13"/><path d="M15 21V11l6 3v7M3 21h18M7 11h2M7 15h2"/></svg></div>
-        <b data-count="2">2</b><span>Companies</span>
-      </div>
-      <div class="num">
-        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3M9 20h6M12 14v6"/></svg></div>
-        <b data-count="5">5</b><span>Roles Held</span>
-      </div>
-      <div class="num">
-        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></div>
-        <b>B2B</b><span>Sales Focus</span>
-      </div>
     </div>
   </div>
 </section>
