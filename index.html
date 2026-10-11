@@ -477,6 +477,45 @@ h1.name{
   .vid-badge{display:none}
 }
 
+/* ---------- entry loader: guarantees the film opens with sound ---------- */
+.enter{
+  position:fixed;inset:0;z-index:999;display:grid;place-items:center;
+  background:
+    radial-gradient(70% 55% at 50% 42%, rgba(168,62,140,.4), transparent 68%),
+    linear-gradient(180deg,#1b0917 0%,#120712 52%,#07040a 100%);
+  transition:opacity .7s ease,visibility .7s ease;
+}
+.enter.gone{opacity:0;visibility:hidden;pointer-events:none}
+.enter-in{text-align:center;padding:24px;max-width:520px}
+.enter-name{
+  font-family:'Great Vibes',cursive;font-size:clamp(2.6rem,7vw,4.4rem);line-height:1.1;
+  padding:.04em .06em .08em 0;
+  background:var(--gold);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 4px 22px rgba(224,171,66,.35));
+}
+.enter-sub{font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);margin-top:6px}
+.bar{
+  width:min(260px,70vw);height:2px;border-radius:2px;margin:26px auto 12px;
+  background:rgba(235,185,223,.18);overflow:hidden;
+}
+.bar i{display:block;height:100%;width:0;border-radius:2px;background:var(--gold);transition:width .3s ease}
+.enter-state{font-size:.72rem;color:var(--mut);letter-spacing:.06em;min-height:1.4em}
+.enter-btn{
+  display:none;align-items:center;gap:10px;margin:20px auto 0;cursor:pointer;font-family:inherit;
+  padding:14px 28px;border-radius:999px;border:0;
+  font-size:.84rem;font-weight:600;letter-spacing:.03em;
+  background:linear-gradient(135deg,var(--pink),var(--pink-2));color:var(--ink-on-pink);
+  box-shadow:0 12px 34px rgba(235,185,223,.34);
+  animation:breathe 2.4s ease-in-out infinite;
+}
+.enter.ready .enter-btn{display:inline-flex}
+.enter.ready .bar{opacity:.25}
+.enter-btn svg{width:17px;height:17px;fill:currentColor}
+@keyframes breathe{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.enter-note{font-size:.64rem;color:#8f7f8c;margin-top:14px;letter-spacing:.04em}
+body.locked{overflow:hidden}
+@media(prefers-reduced-motion:reduce){.enter-btn{animation:none}}
+
 /* ---------- film hero: nothing but the video ---------- */
 .hero-film{
   position:relative;height:100svh;min-height:420px;overflow:hidden;background:#07040a;
@@ -683,6 +722,21 @@ h1.name{
 </style>
 </head>
 <body>
+
+<!-- entry gate: the click that lets the film play with sound -->
+<div class="enter" id="enter" role="dialog" aria-label="Enter the site">
+  <div class="enter-in">
+    <div class="enter-name">Fatima Ahsan</div>
+    <div class="enter-sub">Business Development &middot; Lahore</div>
+    <div class="bar"><i id="barFill"></i></div>
+    <div class="enter-state" id="enterState">Loading showreel&hellip;</div>
+    <button class="enter-btn" id="enterBtn" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 2v2a8 8 0 0 1 0 16v2a10 10 0 0 0 0-20z"/></svg>
+      Enter with sound
+    </button>
+    <div class="enter-note">Plays a short showreel with audio</div>
+  </div>
+</div>
 
 <div class="aurora"><span></span><span></span><span></span></div>
 
@@ -1282,66 +1336,91 @@ document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
   window.addEventListener('resize', sync);
 })();
 
-// ---------- hero video: sound on, plays only while in view ----------
+// ---------- entry gate + hero film (never starts muted) ----------
 (function(){
-  var vid  = document.getElementById('heroVid'),
-      hero = document.getElementById('home');
-  if (!vid || !hero) return;
+  var vid   = document.getElementById('heroVid'),
+      hero  = document.getElementById('home'),
+      gate  = document.getElementById('enter'),
+      btn   = document.getElementById('enterBtn'),
+      fill  = document.getElementById('barFill'),
+      state = document.getElementById('enterState');
+  if (!vid || !hero || !gate) return;
 
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var visible = true, failed = false, needsGesture = false;
+  var reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var entered  = false, visible = true, failed = false;
 
-  function play(){
-    if (reduced || failed) return;
-    var r = vid.play();
-    if (r && r.catch) r.catch(function(){
-      // browsers refuse sound before the visitor interacts, so start silent
-      // and switch the sound on at their first click, tap or key press
-      needsGesture = true;
-      vid.muted = true;
-      var q = vid.play();
-      if (q && q.catch) q.catch(function(){});
-    });
+  document.body.classList.add('locked');
+
+  /* ---- loading progress ---- */
+  function pct(p){ if (fill) fill.style.width = Math.max(4, Math.min(100, p)) + '%'; }
+  function ready(msg){
+    gate.classList.add('ready');
+    if (state) state.textContent = msg || 'Ready';
+    pct(100);
   }
-  function pause(){ if (!vid.paused) vid.pause(); }
-
-  function soundOn(){
-    if (!needsGesture) return;
-    needsGesture = false;
-    vid.muted = false;
-    vid.volume = 1;
-    var r = vid.play();
-    if (r && r.catch) r.catch(function(){
-      // sound still refused: never leave it stalled, go back to silent playback
-      needsGesture = true;
-      vid.muted = true;
-      var q = vid.play();
-      if (q && q.catch) q.catch(function(){});
-    });
-    off();
+  function progress(){
+    try {
+      if (vid.buffered.length && vid.duration){
+        pct((vid.buffered.end(vid.buffered.length - 1) / vid.duration) * 100);
+      }
+    } catch(e){}
   }
-  function off(){
-    ['pointerdown','touchstart','keydown'].forEach(function(e){
-      document.removeEventListener(e, soundOn);
-    });
-  }
-  ['pointerdown','touchstart','keydown'].forEach(function(e){
-    document.addEventListener(e, soundOn, {passive:true});
-  });
-
+  vid.addEventListener('progress', progress);
+  vid.addEventListener('loadedmetadata', function(){ pct(20); });
+  vid.addEventListener('canplay', function(){ progress(); ready(); });
+  vid.addEventListener('canplaythrough', function(){ ready(); });
   vid.addEventListener('error', function(){
     failed = true;
     hero.classList.add('film-failed');
-    vid.remove();
+    ready('Showreel unavailable');
+    if (btn) btn.lastChild.textContent = ' Continue';
   });
 
+  // never hold the visitor hostage to a slow network
+  setTimeout(function(){ if (!gate.classList.contains('ready')) ready('Ready'); }, 6000);
+  vid.load();
+
+  /* ---- the click that buys us audio ---- */
+  function play(){
+    if (!entered || reduced || failed) return;
+    var r = vid.play();
+    if (r && r.catch) r.catch(function(){});
+  }
+  function pause(){ if (!vid.paused) vid.pause(); }
+
+  function enterSite(){
+    if (entered) return;
+    entered = true;
+    document.body.classList.remove('locked');
+    gate.classList.add('gone');
+
+    if (!failed && !reduced){
+      vid.muted = false;          // a real gesture got us here, so sound is allowed
+      vid.volume = 1;
+      vid.currentTime = 0;
+      var r = vid.play();
+      if (r && r.catch) r.catch(function(){
+        // last resort only: motion beats a frozen frame
+        vid.muted = true;
+        var q = vid.play(); if (q && q.catch) q.catch(function(){});
+      });
+    }
+    setTimeout(function(){ gate.remove(); }, 900);
+  }
+
+  if (btn) btn.addEventListener('click', enterSite);
+  gate.addEventListener('click', function(e){ if (gate.classList.contains('ready')) enterSite(); });
+  document.addEventListener('keydown', function(e){
+    if (!entered && gate.classList.contains('ready') && (e.key === 'Enter' || e.key === ' ')) enterSite();
+  });
+
+  /* ---- play only while the film is on screen ---- */
   var io = new IntersectionObserver(function(entries){
     visible = entries[0].isIntersecting;
     if (visible) play(); else pause();
   }, {threshold:0});
   io.observe(hero);
 
-  // belt and braces: if the observer is ever starved, the scroll position decides
   var ticking = false;
   window.addEventListener('scroll', function(){
     if (ticking) return;
@@ -1355,11 +1434,10 @@ document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
   }, {passive:true});
 
   document.addEventListener('visibilitychange', function(){
-    if (document.hidden) pause();
-    else if (visible) play();
+    if (document.hidden) pause(); else if (visible) play();
   });
 
-  if (reduced){ pause(); vid.removeAttribute('loop'); }
+  if (reduced) vid.removeAttribute('loop');
 })();
 
 // ---------- skill marquee ----------
